@@ -4,1156 +4,598 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Betterprepared Drivers — Driving Lessons</title>
-  <meta name="description" content="Professional driving lessons for learners, refreshers and test prep. Calm, structured lessons in automatic and manual vehicles.">
+  <meta name="description" content="Calm, structured driving lessons for learners who want to pass first time and actually know what they're doing. Automatic and manual vehicles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f6f7f4;
-      --white: #ffffff;
-      --ink: #18211c;
-      --mid: #4e5e56;
-      --rule: #dde4de;
-      --green: #1e5540;
-      --green2: #276b51;
-      --pale: #eaf2ec;
-      --gold: #e8bb4a;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Manrope, system-ui, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      width: min(1120px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* ─── NAV ─── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(246,247,244,.93);
-      border-bottom: 1px solid var(--rule);
-      backdrop-filter: blur(16px);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      gap: 20px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      background: var(--green);
-      color: #fff;
-      border-radius: 7px;
-      display: grid;
-      place-items: center;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      flex-shrink: 0;
-    }
-
-    .logo-name {
-      font-size: 15px;
-      line-height: 1.1;
-    }
-
-    .logo-sub {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--mid);
-      letter-spacing: .04em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .nav-links a {
-      padding: 7px 12px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--mid);
-      transition: background .14s, color .14s;
-    }
-
-    .nav-links a:hover { background: var(--pale); color: var(--green); }
-
-    .nav-phone {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--green);
-    }
-
-    .nav-phone svg { flex-shrink: 0; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: 44px;
-      padding: 0 20px;
-      border-radius: 8px;
-      font: 700 14px/1 Manrope, sans-serif;
-      cursor: pointer;
-      border: none;
-      transition: transform .15s, box-shadow .15s;
-    }
-
-    .btn-dark {
-      background: var(--ink);
-      color: #fff;
-    }
-
-    .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(24,33,28,.22); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--rule);
-    }
-
-    .btn-outline:hover { border-color: var(--green); color: var(--green); background: var(--pale); }
-
-    .btn-green {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,85,64,.28); background: var(--green2); }
-
-    .btn-white {
-      background: #fff;
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    .btn-white:hover { background: var(--pale); }
-
-    /* ─── HERO ─── */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-      padding: 56px 0 80px;
-      min-height: calc(100vh - 68px);
-    }
-
-    .hero h1 {
-      font-size: clamp(48px, 7vw, 96px);
-      line-height: .92;
-      letter-spacing: -0.07em;
-      font-weight: 800;
-      max-width: 10ch;
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 1.7vw, 19px);
-      color: #3b4a41;
-      max-width: 46ch;
-      margin-top: 22px;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 32px;
-      flex-wrap: wrap;
-    }
-
-    .hero-meta {
-      display: flex;
-      gap: 32px;
-      margin-top: 40px;
-      padding-top: 28px;
-      border-top: 1px solid var(--rule);
-    }
-
-    .hero-meta-item strong {
-      display: block;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-    }
-
-    .hero-meta-item span {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--mid);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    /* ─── 3D SCENE ─── */
-    .scene {
-      position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      min-height: 560px;
-      border: 1px solid var(--rule);
-      box-shadow: 0 32px 80px rgba(24,33,28,.11);
-      background: linear-gradient(160deg, #deeae0 0%, #f0f5f0 50%, #e4ede6 100%);
-    }
-
-    #canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .scene-footer {
-      position: absolute;
-      bottom: 14px;
-      left: 14px;
-      right: 14px;
-      padding: 14px 16px;
-      background: rgba(255,255,255,.85);
-      backdrop-filter: blur(14px);
-      border-radius: 9px;
-      border: 1px solid rgba(221,228,222,.9);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .scene-footer p {
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-
-    .scene-footer span {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--mid);
-      display: block;
-      margin-top: 2px;
-    }
-
-    .badge {
-      flex-shrink: 0;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: var(--pale);
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    /* ─── DIVIDER ─── */
-    hr { border: none; border-top: 1px solid var(--rule); }
-
-    /* ─── ABOUT ─── */
-    .about {
-      padding: 80px 0;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .about h2 {
-      font-size: clamp(30px, 4vw, 52px);
-      line-height: .96;
-      letter-spacing: -0.06em;
-      margin-bottom: 20px;
-    }
-
-    .about p {
-      color: #3b4a41;
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .about p:last-of-type { margin-bottom: 28px; }
-
-    .cred-list {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .cred {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .cred::before {
-      content: "";
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--pale);
-      border: 2px solid var(--green);
-      flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 10l3.5 3.5L15 7' stroke='%231e5540' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-size: 16px;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .about-visual {
-      position: relative;
-    }
-
-    .visual-card {
-      border-radius: 12px;
-      background: var(--green);
-      padding: 36px;
-      color: #fff;
-      min-height: 440px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      overflow: hidden;
-    }
-
-    .visual-card::before {
-      content: "";
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.06);
-    }
-
-    .visual-card::after {
-      content: "";
-      position: absolute;
-      top: 60px;
-      left: -30px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.04);
-    }
-
-    .vc-quote {
-      position: relative;
-      z-index: 2;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.2;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .vc-name {
-      position: relative;
-      z-index: 2;
-      font-size: 13px;
-      font-weight: 700;
-      color: rgba(255,255,255,.6);
-    }
-
-    .vc-stat {
-      position: absolute;
-      top: 28px;
-      left: 28px;
-      z-index: 2;
-    }
-
-    .vc-stat strong {
-      display: block;
-      font-size: 52px;
-      font-weight: 800;
-      letter-spacing: -0.08em;
-      line-height: 1;
-      color: rgba(255,255,255,.9);
-    }
-
-    .vc-stat span {
-      font-size: 13px;
-      font-weight: 700;
-      color: rgba(255,255,255,.5);
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    /* ─── SERVICES ─── */
-    .services {
-      padding: 80px 0;
-    }
-
-    .services h2 {
-      font-size: clamp(30px, 4vw, 52px);
-      letter-spacing: -0.06em;
-      line-height: .96;
-      margin-bottom: 8px;
-    }
-
-    .services-intro {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 32px;
-      margin-bottom: 40px;
-    }
-
-    .services-intro p {
-      color: var(--mid);
-      font-size: 16px;
-      max-width: 42ch;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-    }
-
-    .sc {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: box-shadow .18s, transform .18s;
-    }
-
-    .sc:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(24,33,28,.09); }
-
-    .sc.featured {
-      background: var(--green);
-      border-color: transparent;
-      color: #fff;
-    }
-
-    .sc-label {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--green);
-    }
-
-    .sc.featured .sc-label { color: rgba(255,255,255,.55); }
-
-    .sc h3 {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.05em;
-      line-height: 1.1;
-    }
-
-    .sc p {
-      font-size: 15px;
-      line-height: 1.6;
-      color: var(--mid);
-      flex: 1;
-    }
-
-    .sc.featured p { color: rgba(255,255,255,.72); }
-
-    .sc ul {
-      list-style: none;
-      display: grid;
-      gap: 6px;
-    }
-
-    .sc ul li {
-      font-size: 14px;
-      font-weight: 600;
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .sc ul li::before {
-      content: "—";
-      position: absolute;
-      left: 0;
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    .sc.featured ul li::before { color: var(--gold); }
-
-    .sc .btn { align-self: flex-start; margin-top: 6px; }
-
-    /* ─── TESTIMONIALS ─── */
-    .testimonials {
-      padding: 80px 0;
-    }
-
-    .testimonials h2 {
-      font-size: clamp(28px, 3.5vw, 46px);
-      letter-spacing: -0.06em;
-      margin-bottom: 32px;
-    }
-
-    .review-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .review {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      padding: 24px;
-    }
-
-    .stars {
-      color: var(--gold);
-      font-size: 15px;
-      letter-spacing: 2px;
-      margin-bottom: 14px;
-    }
-
-    .review blockquote {
-      font-size: 15px;
-      line-height: 1.65;
-      color: #2e3e36;
-      margin-bottom: 18px;
-      font-style: normal;
-    }
-
-    .reviewer {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--mid);
-    }
-
-    /* ─── CONTACT ─── */
-    .contact {
-      padding: 80px 0;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 14px;
-      align-items: stretch;
-    }
-
-    .contact-left {
-      background: var(--ink);
-      border-radius: 12px;
-      padding: 36px;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    .contact-left h2 {
-      font-size: clamp(26px, 3vw, 40px);
-      letter-spacing: -0.06em;
-      line-height: 1;
-      color: #fff;
-    }
-
-    .contact-left p {
-      color: rgba(255,255,255,.6);
-      font-size: 15px;
-      line-height: 1.65;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .contact-link-icon {
-      width: 38px;
-      height: 38px;
-      background: rgba(255,255,255,.1);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      font-size: 16px;
-    }
-
-    .contact-right {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      border-radius: 12px;
-      padding: 36px;
-    }
-
-    .contact-right h3 {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      margin-bottom: 4px;
-    }
-
-    .contact-right > p {
-      color: var(--mid);
-      font-size: 14px;
-      margin-bottom: 24px;
-    }
-
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    .form-group { display: flex; flex-direction: column; gap: 10px; }
-
-    input, select, textarea {
-      width: 100%;
-      border: 1.5px solid var(--rule);
-      border-radius: 8px;
-      background: var(--bg);
-      padding: 12px 14px;
-      font: 600 14px/1.4 Manrope, sans-serif;
-      color: var(--ink);
-      outline: none;
-      transition: border-color .14s, box-shadow .14s;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(30,85,64,.1);
-    }
-
-    textarea { min-height: 100px; resize: vertical; }
-
-    select { cursor: pointer; }
-
-    .submit-btn {
-      width: 100%;
-      height: 50px;
-      font-size: 15px;
-      font-weight: 800;
-      background: var(--green);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background .15s, transform .15s, box-shadow .15s;
-    }
-
-    .submit-btn:hover {
-      background: var(--green2);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(30,85,64,.26);
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--rule);
-      padding: 24px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--mid);
-    }
-
-    .footer-right { display: flex; gap: 20px; }
-    .footer-right a:hover { color: var(--ink); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 860px) {
-      .hero, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .hero { min-height: auto; padding: 40px 0 60px; }
-      .service-grid { grid-template-columns: 1fr; }
-      .review-grid { grid-template-columns: 1fr; }
-      .services-intro { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .nav-links a:not(.btn-dark) { display: none; }
-      .scene { min-height: 440px; }
-    }
-
-    @media (max-width: 560px) {
-      .wrap { width: calc(100% - 28px); }
-      h1 { font-size: clamp(42px, 15vw, 70px); }
-      .hero-meta { gap: 20px; }
-      .field-row { grid-template-columns: 1fr; }
-      .footer-inner { flex-direction: column; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <nav>
-    <div class="wrap nav-inner">
-      <a class="logo" href="#top">
-        <span class="logo-mark">BPD</span>
-        <span>
-          <span class="logo-name">Betterprepared Drivers</span>
-          <span class="logo-sub">Professional driving lessons</span>
-        </span>
+<!-- ── NAV ── -->
+<nav id="nav" role="navigation" aria-label="Main">
+  <div class="wrap nav-inner">
+    <a class="nav-logo" href="/" aria-label="BPD home">
+      <span class="nav-logo-mark" aria-hidden="true">BPD</span>
+      <span class="nav-logo-text">
+        <strong>Betterprepared Drivers</strong>
+        <small>Professional driving lessons</small>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+61400000000">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.53 6.53l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0400 000 000
       </a>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-phone" href="tel:+61400000000">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.53 6.53l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          0400 000 000
-        </a>
-        <a class="btn btn-dark" href="#contact">Book a lesson</a>
-      </div>
+      <a class="btn btn-green btn-sm" href="contact.html">Book a lesson</a>
+      <button class="nav-burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <main id="top">
+<!-- ── MOBILE DRAWER ── -->
+<div class="nav-drawer" id="drawer" role="menu">
+  <a href="/" role="menuitem">Home</a>
+  <a href="about.html" role="menuitem">About</a>
+  <a href="services.html" role="menuitem">Services</a>
+  <a href="contact.html" role="menuitem">Contact</a>
+  <a href="tel:+61400000000" role="menuitem">Call: 0400 000 000</a>
+  <a class="btn btn-green" href="contact.html" role="menuitem">Book a lesson</a>
+</div>
 
-    <!-- HERO -->
-    <div class="wrap hero">
-      <div>
-        <h1>Get your Ps. No stress.</h1>
-        <p class="hero-sub">Structured, patient driving lessons for learners who want to pass first time — and actually know what they're doing behind the wheel.</p>
-        <div class="hero-actions">
-          <a class="btn btn-green" href="#contact">Book a lesson</a>
-          <a class="btn btn-outline" href="tel:+61400000000">Call 0400 000 000</a>
-        </div>
-        <div class="hero-meta">
-          <div class="hero-meta-item">
-            <strong>Auto + Manual</strong>
-            <span>Both available</span>
-          </div>
-          <div class="hero-meta-item">
-            <strong>All ages</strong>
-            <span>16 to 60+</span>
-          </div>
-          <div class="hero-meta-item">
-            <strong>Test prep</strong>
-            <span>L to P and beyond</span>
-          </div>
-        </div>
-      </div>
+<main>
 
-      <div class="scene">
-        <canvas id="canvas"></canvas>
-        <div class="scene-footer">
-          <div>
-            <p>Interactive 3D lesson preview</p>
-            <span>Move your mouse to look around</span>
-          </div>
-          <span class="badge">Dual-control car</span>
-        </div>
-      </div>
-    </div>
-
-    <hr>
-
-    <!-- ABOUT -->
-    <section class="about" id="about">
-      <div class="wrap about-grid">
+  <!-- ── HERO ── -->
+  <section class="hero" aria-label="Hero">
+    <div class="wrap" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+      <div class="hero-content">
         <div>
-          <h2>Your instructor, not just a car and a timer.</h2>
-          <p>Betterprepared Drivers was started because most learners don't fail from lack of hours — they fail from lack of proper feedback. Every lesson is structured around what you actually need to work on, not a generic checklist.</p>
-          <p>Lessons are available in both automatic and manual vehicles, and suit everyone from nervous first-timers to experienced drivers who want to tighten up before their test.</p>
-          <div class="cred-list">
-            <div class="cred">Fully licensed and qualified driving instructor</div>
-            <div class="cred">Automatic and manual vehicles</div>
-            <div class="cred">Learners, refreshers and test preparation</div>
-            <div class="cred">Flexible scheduling, including weekends</div>
+          <div class="hero-label" aria-hidden="true">BPD driving lessons</div>
+          <h1>Get your Ps.<br><em>No stress.</em></h1>
+          <p class="hero-sub">Structured, patient lessons for learners who want to pass first time — and actually know what they're doing behind the wheel.</p>
+          <div class="hero-actions">
+            <a class="btn btn-gold btn-lg" href="contact.html">Book a lesson</a>
+            <a class="btn btn-outline-white btn-lg" href="services.html">See all services</a>
           </div>
-          <a class="btn btn-green" href="#contact">Make an enquiry</a>
-        </div>
-
-        <div class="about-visual">
-          <div class="visual-card">
-            <div class="vc-stat">
-              <strong>1:1</strong>
-              <span>Every lesson</span>
+          <div class="hero-meta" aria-label="Key facts">
+            <div class="hero-stat">
+              <strong>Auto + Manual</strong>
+              <span>Both available</span>
             </div>
-            <p class="vc-quote">"I teach you to drive — not just to pass."</p>
-            <p class="vc-name">Betterprepared Drivers instructor</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr>
-
-    <!-- SERVICES -->
-    <section class="services" id="services">
-      <div class="wrap">
-        <div class="services-intro">
-          <div>
-            <h2>Lessons for every stage.</h2>
-            <p>Whether you've never touched a steering wheel or you're booked in for your test next week, there's a lesson that fits.</p>
-          </div>
-          <a class="btn btn-outline" href="#contact">Get a quote</a>
-        </div>
-        <div class="service-grid">
-          <div class="sc featured">
-            <div class="sc-label">Government program</div>
-            <h3>Free Learner Lesson</h3>
-            <p>Eligible Victorian learners aged 16–19 may be able to access a free professional driving lesson through the myLearnersDrive program.</p>
-            <ul>
-              <li>Eligible learner drivers 16–19</li>
-              <li>Lesson with a qualified instructor</li>
-              <li>Supervising driver included</li>
-            </ul>
-            <a class="btn btn-white" href="#contact">Check eligibility</a>
-          </div>
-
-          <div class="sc">
-            <div class="sc-label">Most popular</div>
-            <h3>Single Lesson</h3>
-            <p>One-on-one lessons tailored to where you're at. Honest feedback, proper coaching — not just driving around.</p>
-            <ul>
-              <li>Auto or manual vehicle</li>
-              <li>Beginner to advanced</li>
-              <li>Debrief at the end of every session</li>
-            </ul>
-            <a class="btn btn-outline" href="#contact">Book now</a>
-          </div>
-
-          <div class="sc">
-            <div class="sc-label">Save money</div>
-            <h3>Lesson Packages</h3>
-            <p>A sequence of lessons designed to build skills progressively. Discounted rate versus booking individually.</p>
-            <ul>
-              <li>Structured lesson plan</li>
-              <li>Better value than singles</li>
-              <li>Flexible scheduling</li>
-            </ul>
-            <a class="btn btn-outline" href="#contact">Get a quote</a>
-          </div>
-
-          <div class="sc">
-            <div class="sc-label">Before your test</div>
-            <h3>Test Preparation</h3>
-            <p>Focused on exactly what's assessed on test day. Mock assessment, feedback on any weak spots, route familiarity.</p>
-            <ul>
-              <li>Full mock test assessment</li>
-              <li>Test route practice</li>
-              <li>Covers common fail points</li>
-            </ul>
-            <a class="btn btn-outline" href="#contact">Book prep lesson</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr>
-
-    <!-- TESTIMONIALS -->
-    <section class="testimonials" id="reviews">
-      <div class="wrap">
-        <h2>What students say.</h2>
-        <div class="review-grid">
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <blockquote>"I'd had lessons before with another instructor and always left feeling confused. First lesson with BPD and I actually understood what I was doing wrong with my merging. Passed my test three weeks later."</blockquote>
-            <div class="reviewer">Mia T. — passed first attempt</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <blockquote>"Really calm, never made me feel stupid for not knowing something. I'm 34 and finally got my licence after putting it off for years. Couldn't recommend enough."</blockquote>
-            <div class="reviewer">Daniel R. — refresher student</div>
-          </div>
-          <div class="review">
-            <div class="stars">★★★★★</div>
-            <blockquote>"Did the test prep package. Best money I spent. Went in knowing exactly what to expect, which takes a lot of the nerves away. Passed with no critical errors."</blockquote>
-            <div class="reviewer">Priya S. — test prep student</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr>
-
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-      <div class="wrap contact-grid">
-        <div class="contact-left">
-          <div>
-            <h2>Book a lesson or ask a question.</h2>
-            <p style="margin-top:14px;">Send your suburb, experience level and preferred times. We'll come back to you with availability and the best starting point.</p>
-          </div>
-          <div class="contact-links">
-            <a class="contact-link" href="tel:+61400000000">
-              <span class="contact-link-icon">📞</span>
-              0400 000 000
-            </a>
-            <a class="contact-link" href="mailto:bookings@betterprepared.com.au">
-              <span class="contact-link-icon">✉️</span>
-              bookings@betterprepared.com.au
-            </a>
-          </div>
-        </div>
-
-        <div class="contact-right">
-          <h3>Send an enquiry</h3>
-          <p>We'll reply within 24 hours.</p>
-          <form class="form-group" action="mailto:bookings@betterprepared.com.au" method="post" enctype="text/plain">
-            <div class="field-row">
-              <input name="name" placeholder="Your name" autocomplete="name">
-              <input name="phone" placeholder="Phone number" autocomplete="tel">
+            <div class="hero-stat">
+              <strong>All ages</strong>
+              <span>16 to 60+</span>
             </div>
-            <input name="suburb" placeholder="Your suburb">
-            <select name="type">
-              <option value="" disabled selected>Type of lesson</option>
-              <option>Single lesson — automatic</option>
-              <option>Single lesson — manual</option>
-              <option>Lesson package</option>
-              <option>Test preparation</option>
-              <option>Free learner lesson (eligibility check)</option>
-              <option>Refresher lesson</option>
-            </select>
-            <textarea name="message" placeholder="Anything else — experience level, availability, questions"></textarea>
-            <button class="submit-btn" type="submit">Send enquiry</button>
-          </form>
+            <div class="hero-stat">
+              <strong>L to P</strong>
+              <span>And beyond</span>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-  </main>
+        </div>
 
-  <footer>
-    <div class="wrap footer-inner">
-      <span>© 2026 Betterprepared Drivers</span>
-      <div class="footer-right">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <div class="scene-wrap" aria-label="Interactive 3D driving scene — move your mouse to look around">
+          <canvas id="canvas"></canvas>
+          <div class="scene-chip">
+            <div>
+              <p>Interactive 3D preview</p>
+              <span>Move your mouse to look around</span>
+            </div>
+            <span class="chip-badge">Dual-control car</span>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- First set -->
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Fully licensed instructor
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Automatic &amp; manual vehicles
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Learners &amp; refreshers welcome
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Test preparation specialists
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Flexible scheduling
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Free government lesson (eligible learners)
+      </span>
+      <span class="marquee-dot"></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Fully licensed instructor
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Automatic &amp; manual vehicles
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Learners &amp; refreshers welcome
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Test preparation specialists
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Flexible scheduling
+      </span>
+      <span class="marquee-dot"></span>
+      <span class="marquee-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Free government lesson (eligible learners)
+      </span>
+      <span class="marquee-dot"></span>
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <section class="section section--white">
+    <div class="wrap">
+      <div class="stats-grid reveal">
+        <div class="stat-block">
+          <div class="stat-number">
+            <span class="counter" data-target="98" data-suffix="%">0%</span>
+          </div>
+          <div class="stat-label">Student satisfaction rate</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">
+            <span class="counter" data-target="500" data-suffix="+">0+</span>
+          </div>
+          <div class="stat-label">Students taught</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">
+            <span class="counter" data-target="4" data-suffix=" services">0</span>
+          </div>
+          <div class="stat-label">Lesson types available</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">
+            <span class="counter" data-target="7" data-suffix=" days">0</span>
+          </div>
+          <div class="stat-label">Lessons available all week</div>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script type="module">
-    import * as THREE from "https://unpkg.com/three@0.163.0/build/three.module.js";
+  <!-- ── HOW IT WORKS ── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="section-label">How it works</span>
+        <h2>From nervous to confident in three steps.</h2>
+        <p>No generic lesson plans. Every session is built around where you're at and what you actually need to improve.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <h3>We assess your level</h3>
+          <p>First lesson covers your current experience, confidence, and goals. No judgement — just an honest starting point so every lesson is useful.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <h3>We build your skills</h3>
+          <p>Structured sessions covering observation, road positioning, hazard perception, parking, merging, and real traffic decision-making.</p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <h3>We prepare you for test day</h3>
+          <p>Mock assessments, test route practice, and focused feedback on exactly what examiners look for. No surprises on the day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const el = document.getElementById("canvas");
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xeef3ee, 18, 40);
+  <!-- ── SERVICES PREVIEW ── -->
+  <section class="section section--white">
+    <div class="wrap">
+      <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;">
+        <div>
+          <span class="section-label reveal">Our services</span>
+          <h2 class="reveal reveal-delay-1">Lessons for every stage.</h2>
+        </div>
+        <a class="btn btn-outline reveal reveal-delay-2" href="services.html">View all services
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <div class="service-cards">
+        <div class="sc featured reveal">
+          <div class="sc-tag">Government program</div>
+          <h3>Free Learner Lesson</h3>
+          <p>Eligible Victorian learners aged 16–19 may access a free professional lesson through the myLearnersDrive program.</p>
+          <ul class="sc-list" aria-label="Included">
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Eligible learners 16–19
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              With qualified instructor
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Supervising driver included
+            </li>
+          </ul>
+          <a class="btn btn-white btn-sm" href="services.html#free">Check eligibility</a>
+        </div>
 
-    const renderer = new THREE.WebGLRenderer({ canvas: el, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        <div class="sc reveal reveal-delay-1">
+          <div class="sc-tag">Most popular</div>
+          <h3>Single Lesson</h3>
+          <p>One-on-one sessions tailored to your level. Structured, with honest feedback — not just driving around.</p>
+          <ul class="sc-list" aria-label="Included">
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Auto or manual
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Beginner to advanced
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Debrief after every session
+            </li>
+          </ul>
+          <a class="btn btn-green btn-sm" href="contact.html">Book now</a>
+        </div>
 
-    const cam = new THREE.PerspectiveCamera(36, 1, .1, 80);
-    cam.position.set(6.4, 4.8, 9.4);
-    cam.lookAt(0, .8, 0);
+        <div class="sc reveal reveal-delay-2">
+          <div class="sc-tag">Best value</div>
+          <h3>Lesson Packages</h3>
+          <p>Discounted sequence of lessons that builds skills progressively. Better value than individual bookings.</p>
+          <ul class="sc-list" aria-label="Included">
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Structured plan
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Savings vs singles
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Flexible scheduling
+            </li>
+          </ul>
+          <a class="btn btn-outline btn-sm" href="contact.html">Get a quote</a>
+        </div>
 
-    scene.add(new THREE.HemisphereLight(0xffffff, 0xa8b8a0, 2.2));
-    const sun = new THREE.DirectionalLight(0xfffdf6, 3.0);
-    sun.position.set(5, 10, 7);
-    sun.castShadow = true;
-    sun.shadow.mapSize.set(1024, 1024);
-    scene.add(sun);
-    const fill = new THREE.DirectionalLight(0xd4ead8, .7);
-    fill.position.set(-5, 3, -3);
-    scene.add(fill);
+        <div class="sc reveal reveal-delay-3">
+          <div class="sc-tag">Before your test</div>
+          <h3>Test Preparation</h3>
+          <p>Targeted practice on exactly what's assessed on test day. Mock run, feedback on weak points, route familiarity.</p>
+          <ul class="sc-list" aria-label="Included">
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Full mock assessment
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Test route practice
+            </li>
+            <li>
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              Common fail points covered
+            </li>
+          </ul>
+          <a class="btn btn-outline btn-sm" href="contact.html">Book prep</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    const M = (c, r = .75, m = .02) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: m });
+  <!-- ── TESTIMONIALS ── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header center reveal">
+        <span class="section-label">What students say</span>
+        <h2>Real results, real feedback.</h2>
+        <p>Don't take our word for it.</p>
+      </div>
+      <div class="testimonials-grid">
+        <article class="review reveal reveal-delay-1">
+          <div class="review-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"I'd had lessons before with another instructor and always left confused. First lesson with BPD and I actually understood what I was doing wrong with my lane merging. Passed three weeks later."</blockquote>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">MT</div>
+            <div class="review-info">
+              <strong>Mia T.</strong>
+              <span>Passed first attempt</span>
+            </div>
+          </div>
+        </article>
 
-    const world = new THREE.Group();
-    scene.add(world);
+        <article class="review reveal reveal-delay-2">
+          <div class="review-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Really calm, never made me feel stupid for not knowing something. I'm 34 and finally got my licence after putting it off for years. The patience was incredible. Can't recommend enough."</blockquote>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">DR</div>
+            <div class="review-info">
+              <strong>Daniel R.</strong>
+              <span>Refresher student</span>
+            </div>
+          </div>
+        </article>
 
-    // Ground
-    const gnd = new THREE.Mesh(new THREE.PlaneGeometry(34, 34), M(0xd4e4d4, .94));
-    gnd.rotation.x = -Math.PI / 2;
-    gnd.receiveShadow = true;
-    world.add(gnd);
+        <article class="review reveal reveal-delay-3">
+          <div class="review-stars" aria-label="5 stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <blockquote>"Did the test prep package. Best money I spent. Went in knowing exactly what to expect, which takes most of the nerves away. Passed with zero critical errors."</blockquote>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">PS</div>
+            <div class="review-info">
+              <strong>Priya S.</strong>
+              <span>Test prep student</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    // Road
-    const road = new THREE.Mesh(new THREE.BoxGeometry(5.6, .08, 30), M(0x2c3830, .88));
-    road.position.y = .02;
-    road.rotation.y = -.2;
-    road.receiveShadow = true;
-    world.add(road);
+  <!-- ── CTA ── -->
+  <section class="cta-strip">
+    <div class="wrap cta-strip-inner reveal">
+      <div>
+        <h2>Ready to start driving with confidence?</h2>
+        <p>Get in touch with your suburb, experience level and preferred times. We'll come back with availability within 24 hours.</p>
+      </div>
+      <div class="cta-strip-actions">
+        <a class="btn btn-gold btn-lg" href="contact.html">Book a lesson</a>
+        <a class="btn btn-outline-white btn-lg" href="tel:+61400000000">Call 0400 000 000</a>
+      </div>
+    </div>
+  </section>
 
-    // Centre dashes
-    for (let i = -7; i <= 7; i++) {
-      const d = new THREE.Mesh(new THREE.BoxGeometry(.14, .04, 1.0), M(0xe8bb4a, .5));
-      d.position.set(0, .07, i * 2.4);
-      d.rotation.y = road.rotation.y;
-      world.add(d);
-    }
+</main>
 
-    // Edge lines
-    [-2.4, 2.4].forEach(x => {
-      const e = new THREE.Mesh(new THREE.BoxGeometry(.07, .03, 30), M(0xffffff, .5));
-      e.position.set(x, .05, 0);
-      e.rotation.y = road.rotation.y;
-      world.add(e);
-    });
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="nav-logo-mark" aria-hidden="true">BPD</span>
+          <span class="nav-logo-text">
+            <strong>Betterprepared Drivers</strong>
+            <small>Professional driving lessons</small>
+          </span>
+        </div>
+        <p>Calm, structured driving lessons for learners who want to pass first time — and actually know what they're doing.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <nav class="footer-links" aria-label="Services">
+          <a href="services.html#free">Free learner lesson</a>
+          <a href="services.html#single">Single lesson</a>
+          <a href="services.html#package">Lesson packages</a>
+          <a href="services.html#test">Test preparation</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-links">
+          <a href="tel:+61400000000">0400 000 000</a>
+          <a href="mailto:bookings@betterprepared.com.au">bookings@betterprepared.com.au</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Betterprepared Drivers. All rights reserved.</span>
+      <span>Calm. Structured. Confident.</span>
+    </div>
+  </div>
+</footer>
 
-    // ── Car body ──
-    const car = new THREE.Group();
-    car.position.set(0, .52, .2);
-    car.rotation.y = -.2;
-    world.add(car);
+<script src="js/main.js" defer></script>
+<script type="module">
+  import * as THREE from "https://unpkg.com/three@0.163.0/build/three.module.js";
 
-    const matGreen = M(0x1e5540);
-    const matGlass = new THREE.MeshPhysicalMaterial({ color: 0xbbd5e8, roughness: .1, transmission: .12, transparent: true, opacity: .78 });
+  const el    = document.getElementById("canvas");
+  if (!el) throw new Error("No canvas");
 
-    car.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(3.8, .72, 1.78), matGreen), { castShadow: true, receiveShadow: true }));
+  const scene = new THREE.Scene();
+  scene.fog   = new THREE.Fog(0x0c1810, 18, 42);
 
-    const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.84, .88, 1.44), matGlass);
-    cabin.position.set(.1, .75, 0); cabin.castShadow = true;
-    car.add(cabin);
+  const renderer = new THREE.WebGLRenderer({ canvas: el, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
 
-    const bonnet = new THREE.Mesh(new THREE.BoxGeometry(1.18, .22, 1.58), matGreen);
-    bonnet.position.set(-1.88, .24, 0); bonnet.castShadow = true;
-    car.add(bonnet);
+  const cam = new THREE.PerspectiveCamera(36, 1, .1, 80);
+  cam.position.set(6.4, 4.8, 9.4);
+  cam.lookAt(0, .8, 0);
 
-    const boot = new THREE.Mesh(new THREE.BoxGeometry(.72, .38, 1.58), matGreen);
-    boot.position.set(1.94, .08, 0); boot.castShadow = true;
-    car.add(boot);
+  scene.add(new THREE.HemisphereLight(0x446655, 0x223322, 2.0));
+  const sun = new THREE.DirectionalLight(0xfff8e8, 3.2);
+  sun.position.set(5, 10, 7);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(1024, 1024);
+  scene.add(sun);
+  const fill = new THREE.DirectionalLight(0x88aacc, .5);
+  fill.position.set(-5, 3, -3);
+  scene.add(fill);
 
-    // L-plate
-    const lp = new THREE.Mesh(new THREE.BoxGeometry(1.0, .46, .1), M(0xffffff, .5));
-    lp.position.set(.2, 1.34, 0);
-    car.add(lp);
-    const lc = new THREE.Mesh(new THREE.BoxGeometry(.3, .3, .12), M(0xe8bb4a, .5));
-    lc.position.set(.2, 1.34, .02);
-    car.add(lc);
+  const M = (c, r = .75, m = .02) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: m });
 
-    // Lights
-    [-.38, .38].forEach(z => {
-      const hl = new THREE.Mesh(new THREE.BoxGeometry(.07, .2, .32), M(0xe8bb4a, .4));
-      hl.position.set(-1.94, .08, z);
-      car.add(hl);
-      const tl = new THREE.Mesh(new THREE.BoxGeometry(.06, .18, .3), M(0xcc3030, .4));
-      tl.position.set(1.98, .08, z);
-      car.add(tl);
-    });
+  const world = new THREE.Group();
+  scene.add(world);
 
-    // Wheels
-    const wg = new THREE.CylinderGeometry(.38, .38, .38, 28);
-    const hg = new THREE.CylinderGeometry(.19, .19, .4, 20);
-    [[-1.22, -.26, -.92], [1.22, -.26, -.92], [-1.22, -.26, .92], [1.22, -.26, .92]].forEach(([x,y,z]) => {
-      const w = new THREE.Mesh(wg, M(0x101512, .88));
-      w.rotation.z = Math.PI / 2; w.position.set(x,y,z); w.castShadow = true;
-      car.add(w);
-      const h = new THREE.Mesh(hg, M(0xe8bb4a, .5));
-      h.rotation.z = Math.PI / 2; h.position.set(x,y,z);
-      car.add(h);
-    });
+  // Ground
+  const gnd = new THREE.Mesh(new THREE.PlaneGeometry(34, 34), M(0x1a2e1e, .95));
+  gnd.rotation.x = -Math.PI / 2; gnd.receiveShadow = true;
+  world.add(gnd);
 
-    // ── Traffic cones ──
-    const coneMat = M(0xf07018, .6);
-    const baseM = M(0x111111, .9);
-    [-4.2, -2.6, -1.0, .6, 2.2, 3.8].forEach((z, i) => {
-      const g = new THREE.Group();
-      g.position.set(3.3 + Math.sin(i * 1.4) * .5, 0, z);
-      const cone = new THREE.Mesh(new THREE.ConeGeometry(.16, .52, 22), coneMat);
-      cone.position.y = .3; cone.castShadow = true; g.add(cone);
-      const stripe = new THREE.Mesh(new THREE.CylinderGeometry(.168, .15, .09, 22), M(0xffffff, .5));
-      stripe.position.y = .36; g.add(stripe);
-      const base = new THREE.Mesh(new THREE.CylinderGeometry(.26, .27, .06, 22), baseM);
-      base.position.y = .03; g.add(base);
-      world.add(g);
-    });
+  // Road
+  const road = new THREE.Mesh(new THREE.BoxGeometry(5.6, .08, 30), M(0x1e2820, .9));
+  road.position.y = .02; road.rotation.y = -.2; road.receiveShadow = true;
+  world.add(road);
 
-    // ── Trees ──
-    const trunkM = M(0x8b6840, .9);
-    const leafM  = M(0x2d7848, .88);
-    [[-5.8,3.2],[-5.8,-2.0],[-5.8,-7.4],[6.2,4.0],[6.2,-1.6],[6.2,-7.0]].forEach(([x,z]) => {
-      const g = new THREE.Group(); g.position.set(x, 0, z);
-      const t = new THREE.Mesh(new THREE.CylinderGeometry(.1, .14, .88, 10), trunkM);
-      t.position.y = .44; t.castShadow = true; g.add(t);
-      const l = new THREE.Mesh(new THREE.SphereGeometry(.62, 10, 10), leafM);
-      l.position.y = 1.42; l.castShadow = true; g.add(l);
-      world.add(g);
-    });
+  for (let i = -7; i <= 7; i++) {
+    const d = new THREE.Mesh(new THREE.BoxGeometry(.13, .04, .95), M(0xe6b840, .5));
+    d.position.set(0, .07, i * 2.4); d.rotation.y = road.rotation.y;
+    world.add(d);
+  }
 
-    // ── Road sign ──
-    const postM = M(0x8a9590, .7, .15);
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(.04, .04, 1.6, 14), postM);
-    post.position.set(-3.9, .8, -2.4); post.castShadow = true;
-    world.add(post);
-    const sb = new THREE.Mesh(new THREE.BoxGeometry(1.38, .6, .08), M(0xffffff, .5));
-    sb.position.set(-3.9, 1.65, -2.4); sb.rotation.y = .34; sb.castShadow = true;
-    world.add(sb);
-    const ss = new THREE.Mesh(new THREE.BoxGeometry(.98, .1, .1), M(0x1e5540, .5));
-    ss.position.set(-3.9, 1.67, -2.35); ss.rotation.y = .34;
-    world.add(ss);
+  [-2.4, 2.4].forEach(x => {
+    const e = new THREE.Mesh(new THREE.BoxGeometry(.07, .03, 30), M(0xffffff, .5));
+    e.position.set(x, .05, 0); e.rotation.y = road.rotation.y;
+    world.add(e);
+  });
 
-    // Pointer parallax
-    const ptr = { x: 0, y: 0 };
-    addEventListener("pointermove", e => {
-      ptr.x = (e.clientX / innerWidth - .5) * 2;
-      ptr.y = (e.clientY / innerHeight - .5) * 2;
-    });
+  const car = new THREE.Group();
+  car.position.set(0, .52, .2); car.rotation.y = -.2;
+  world.add(car);
 
-    function resize() {
-      const r = el.getBoundingClientRect();
-      const w = Math.max(1, r.width | 0), h = Math.max(1, r.height | 0);
-      renderer.setSize(w, h, false);
-      cam.aspect = w / h;
-      cam.updateProjectionMatrix();
-    }
+  const matG  = M(0x1a5438);
+  const matGl = new THREE.MeshPhysicalMaterial({ color: 0xb8d8e8, roughness: .08, transmission: .14, transparent: true, opacity: .8 });
 
-    addEventListener("resize", resize);
-    resize();
+  car.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(3.8, .72, 1.78), matG), { castShadow: true }));
+  const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.84, .88, 1.44), matGl);
+  cabin.position.set(.1, .75, 0); cabin.castShadow = true; car.add(cabin);
+  const bonnet = new THREE.Mesh(new THREE.BoxGeometry(1.18, .22, 1.58), matG);
+  bonnet.position.set(-1.88, .24, 0); bonnet.castShadow = true; car.add(bonnet);
+  const boot = new THREE.Mesh(new THREE.BoxGeometry(.72, .38, 1.58), matG);
+  boot.position.set(1.94, .08, 0); boot.castShadow = true; car.add(boot);
 
-    (function tick(t) {
-      t *= .001;
-      car.position.y = .54 + Math.sin(t * 1.8) * .022;
-      car.rotation.y = -.2 + Math.sin(t * .65) * .02;
-      world.rotation.y += (ptr.x * .08 - world.rotation.y) * .04;
-      world.rotation.x += (-ptr.y * .034 - world.rotation.x) * .04;
-      renderer.render(scene, cam);
-      requestAnimationFrame(tick);
-    })(0);
-  </script>
+  const lp = new THREE.Mesh(new THREE.BoxGeometry(1.0, .46, .1), M(0xffffff, .5));
+  lp.position.set(.2, 1.34, 0); car.add(lp);
+  const lc = new THREE.Mesh(new THREE.BoxGeometry(.3, .3, .12), M(0xe6b840, .5));
+  lc.position.set(.2, 1.34, .02); car.add(lc);
+
+  [-.38, .38].forEach(z => {
+    const hl = new THREE.Mesh(new THREE.BoxGeometry(.07, .2, .32), M(0xe6b840, .3));
+    hl.position.set(-1.94, .08, z); car.add(hl);
+    const tl = new THREE.Mesh(new THREE.BoxGeometry(.06, .18, .3), M(0xcc2020, .3));
+    tl.position.set(1.98, .08, z); car.add(tl);
+  });
+
+  const wg = new THREE.CylinderGeometry(.38, .38, .38, 28);
+  const hg = new THREE.CylinderGeometry(.19, .19, .4, 20);
+  [[-1.22,-.26,-.92],[1.22,-.26,-.92],[-1.22,-.26,.92],[1.22,-.26,.92]].forEach(([x,y,z]) => {
+    const w = new THREE.Mesh(wg, M(0x0e1010, .9)); w.rotation.z = Math.PI/2; w.position.set(x,y,z); w.castShadow = true; car.add(w);
+    const h = new THREE.Mesh(hg, M(0xe6b840, .5)); h.rotation.z = Math.PI/2; h.position.set(x,y,z); car.add(h);
+  });
+
+  const coneMat  = M(0xf07018, .6);
+  const coneBase = M(0x0e1010, .9);
+  [-4.2,-2.6,-1.0,.6,2.2,3.8].forEach((z, i) => {
+    const g = new THREE.Group();
+    g.position.set(3.3 + Math.sin(i*1.4)*.5, 0, z);
+    const cone = new THREE.Mesh(new THREE.ConeGeometry(.16,.52,22), coneMat);
+    cone.position.y = .3; cone.castShadow = true; g.add(cone);
+    const stripe = new THREE.Mesh(new THREE.CylinderGeometry(.168,.15,.09,22), M(0xffffff,.5));
+    stripe.position.y = .36; g.add(stripe);
+    const base = new THREE.Mesh(new THREE.CylinderGeometry(.26,.27,.06,22), coneBase);
+    base.position.y = .03; g.add(base);
+    world.add(g);
+  });
+
+  [[-5.8,3.2],[-5.8,-2.0],[-5.8,-7.4],[6.2,4.0],[6.2,-1.6],[6.2,-7.0]].forEach(([x,z]) => {
+    const g = new THREE.Group(); g.position.set(x,0,z);
+    const t = new THREE.Mesh(new THREE.CylinderGeometry(.1,.14,.88,10), M(0x5a3e20,.9));
+    t.position.y = .44; t.castShadow = true; g.add(t);
+    const l = new THREE.Mesh(new THREE.SphereGeometry(.62,10,10), M(0x1a4428,.88));
+    l.position.y = 1.42; l.castShadow = true; g.add(l);
+    world.add(g);
+  });
+
+  const ptr = { x: 0, y: 0 };
+  const el2 = document.getElementById('canvas');
+  if (el2) el2.closest('.scene-wrap').addEventListener("pointermove", e => {
+    const r = el2.getBoundingClientRect();
+    ptr.x = ((e.clientX - r.left) / r.width - .5) * 2;
+    ptr.y = ((e.clientY - r.top)  / r.height - .5) * 2;
+  }, { passive: true });
+
+  function resize() {
+    const r = el.getBoundingClientRect();
+    const w = Math.max(1, r.width|0), h = Math.max(1, r.height|0);
+    renderer.setSize(w, h, false);
+    cam.aspect = w / h; cam.updateProjectionMatrix();
+  }
+
+  window.addEventListener("resize", resize, { passive: true });
+  resize();
+
+  let raf;
+  (function tick(t) {
+    raf = requestAnimationFrame(tick);
+    t  *= .001;
+    car.position.y    = .54 + Math.sin(t * 1.8) * .022;
+    car.rotation.y    = -.2 + Math.sin(t * .65) * .02;
+    world.rotation.y += (ptr.x * .08 - world.rotation.y) * .04;
+    world.rotation.x += (-ptr.y * .034 - world.rotation.x) * .04;
+    renderer.render(scene, cam);
+  })(0);
+</script>
+
 </body>
 </html>
