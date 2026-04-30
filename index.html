@@ -3,944 +3,971 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Betterprepared Drivers | Professional Driving Lessons</title>
-  <meta name="description" content="Calm, professional driving lessons with Betterprepared Drivers. Learner, refresher and test preparation lessons in automatic and manual vehicles.">
+  <title>Betterprepared Drivers — Driving Lessons</title>
+  <meta name="description" content="Professional driving lessons for learners, refreshers and test prep. Calm, structured lessons in automatic and manual vehicles.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #f7f8f5;
-      --surface: #ffffff;
-      --ink: #17201b;
-      --muted: #5e6e66;
-      --line: #dce3dd;
-      --green: #235c45;
-      --green-light: #2e7558;
-      --green-pale: #eef4ef;
-      --yellow: #e9bd4f;
-      --shadow-sm: 0 2px 10px rgba(23,32,27,.08);
-      --shadow: 0 24px 80px rgba(23,32,27,.12);
+      --bg: #f6f7f4;
+      --white: #ffffff;
+      --ink: #18211c;
+      --mid: #4e5e56;
+      --rule: #dde4de;
+      --green: #1e5540;
+      --green2: #276b51;
+      --pale: #eaf2ec;
+      --gold: #e8bb4a;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
-      font-family: Manrope, ui-sans-serif, system-ui, sans-serif;
+      font-family: Manrope, system-ui, sans-serif;
+      font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(rgba(23,32,27,.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(23,32,27,.03) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, #000 0%, transparent 60%);
-    }
-
     a { color: inherit; text-decoration: none; }
 
-    .shell {
-      width: min(1180px, calc(100% - 40px));
+    .wrap {
+      width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    /* ── NAV ── */
-    .topbar {
+    /* ─── NAV ─── */
+    nav {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(247,248,245,.92);
-      border-bottom: 1px solid rgba(220,227,221,.9);
-      backdrop-filter: blur(18px);
+      background: rgba(246,247,244,.93);
+      border-bottom: 1px solid var(--rule);
+      backdrop-filter: blur(16px);
     }
 
-    .topbar-inner {
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      min-height: 72px;
+      height: 68px;
+      gap: 20px;
     }
 
-    .brand {
-      display: inline-flex;
+    .logo {
+      display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
       font-weight: 800;
       letter-spacing: -0.03em;
     }
 
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
+    .logo-mark {
+      width: 38px;
+      height: 38px;
       background: var(--green);
       color: #fff;
-      font-size: 14px;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      font-size: 13px;
       font-weight: 800;
       letter-spacing: -0.04em;
       flex-shrink: 0;
     }
 
-    .brand-text strong {
-      display: block;
+    .logo-name {
       font-size: 15px;
       line-height: 1.1;
     }
 
-    .brand-text small {
+    .logo-sub {
       display: block;
-      color: var(--muted);
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--mid);
+      letter-spacing: .04em;
     }
 
-    .nav {
+    .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
-    .nav-link {
-      padding: 8px 12px;
+    .nav-links a {
+      padding: 7px 12px;
       border-radius: 6px;
       font-size: 14px;
       font-weight: 700;
-      color: #3a4a41;
-      transition: background .15s;
+      color: var(--mid);
+      transition: background .14s, color .14s;
     }
 
-    .nav-link:hover { background: var(--green-pale); color: var(--green); }
+    .nav-links a:hover { background: var(--pale); color: var(--green); }
 
     .nav-phone {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 7px;
-      padding: 8px 14px;
-      border-radius: 6px;
+      gap: 8px;
       font-size: 14px;
       font-weight: 800;
       color: var(--green);
-      background: var(--green-pale);
     }
 
     .nav-phone svg { flex-shrink: 0; }
 
-    .button {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      min-height: 46px;
+      height: 44px;
       padding: 0 20px;
       border-radius: 8px;
-      border: none;
-      background: var(--green);
-      color: #fff;
       font: 700 14px/1 Manrope, sans-serif;
-      white-space: nowrap;
       cursor: pointer;
-      transition: transform .18s, box-shadow .18s, background .18s;
+      border: none;
+      transition: transform .15s, box-shadow .15s;
     }
 
-    .button:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(35,92,69,.28); background: var(--green-light); }
+    .btn-dark {
+      background: var(--ink);
+      color: #fff;
+    }
 
-    .button.outline {
+    .btn-dark:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(24,33,28,.22); }
+
+    .btn-outline {
       background: transparent;
       color: var(--ink);
-      border: 1.5px solid var(--line);
+      border: 1.5px solid var(--rule);
     }
 
-    .button.outline:hover {
-      border-color: var(--green);
-      background: var(--green-pale);
-      color: var(--green);
-      box-shadow: none;
+    .btn-outline:hover { border-color: var(--green); color: var(--green); background: var(--pale); }
+
+    .btn-green {
+      background: var(--green);
+      color: #fff;
     }
 
-    .button.white {
+    .btn-green:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,85,64,.28); background: var(--green2); }
+
+    .btn-white {
       background: #fff;
       color: var(--green);
+      font-weight: 800;
     }
 
-    .button.white:hover {
-      background: var(--green-pale);
-      box-shadow: none;
-    }
+    .btn-white:hover { background: var(--pale); }
 
-    /* ── HERO ── */
+    /* ─── HERO ─── */
     .hero {
       display: grid;
-      grid-template-columns: minmax(0,.96fr) minmax(420px,1.04fr);
+      grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: center;
-      min-height: calc(100vh - 72px);
-      padding: 48px 0 80px;
+      padding: 56px 0 80px;
+      min-height: calc(100vh - 68px);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 2px;
-      background: var(--green);
-      border-radius: 2px;
-    }
-
-    h1 {
-      max-width: 11ch;
-      margin: 0;
-      font-size: clamp(52px, 7.5vw, 108px);
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 96px);
       line-height: .92;
       letter-spacing: -0.07em;
+      font-weight: 800;
+      max-width: 10ch;
     }
 
-    .lede {
-      max-width: 54ch;
-      margin: 26px 0 0;
-      color: #3b4840;
-      font-size: clamp(17px, 1.8vw, 20px);
-      line-height: 1.55;
+    .hero-sub {
+      font-size: clamp(16px, 1.7vw, 19px);
+      color: #3b4a41;
+      max-width: 46ch;
+      margin-top: 22px;
+      line-height: 1.6;
     }
 
     .hero-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
       margin-top: 32px;
-    }
-
-    .trust-pills {
-      display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 28px;
     }
 
-    .trust-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-meta-item span {
       font-size: 12px;
       font-weight: 700;
-      color: #3a4a41;
+      color: var(--mid);
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    .trust-pill::before {
-      content: "✓";
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    /* ── 3D SCENE ── */
-    .scene-wrap {
+    /* ─── 3D SCENE ─── */
+    .scene {
       position: relative;
-      min-height: 580px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      background:
-        radial-gradient(circle at 70% 12%, rgba(120,173,138,.3), transparent 38%),
-        linear-gradient(180deg, #eef4ef 0%, #fff 50%, #e8ede9 100%);
-      box-shadow: var(--shadow);
+      min-height: 560px;
+      border: 1px solid var(--rule);
+      box-shadow: 0 32px 80px rgba(24,33,28,.11);
+      background: linear-gradient(160deg, #deeae0 0%, #f0f5f0 50%, #e4ede6 100%);
     }
 
-    #drive-scene {
+    #canvas {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      display: block;
     }
 
-    .scene-label {
+    .scene-footer {
       position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.85);
+      backdrop-filter: blur(14px);
+      border-radius: 9px;
+      border: 1px solid rgba(221,228,222,.9);
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      padding: 14px 16px;
-      border: 1px solid rgba(220,227,221,.9);
-      border-radius: 10px;
-      background: rgba(255,255,255,.84);
-      backdrop-filter: blur(16px);
     }
 
-    .scene-label strong { display: block; font-size: 13px; }
-    .scene-label span { display: block; color: var(--muted); font-size: 11px; font-weight: 600; margin-top: 2px; }
+    .scene-footer p {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
 
-    .pill {
+    .scene-footer span {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--mid);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .badge {
       flex-shrink: 0;
-      padding: 7px 12px;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: var(--green-pale);
+      background: var(--pale);
       color: var(--green);
       font-size: 12px;
       font-weight: 800;
+      white-space: nowrap;
     }
 
-    /* ── SECTIONS ── */
-    section { padding: 88px 0; border-top: 1px solid var(--line); }
+    /* ─── DIVIDER ─── */
+    hr { border: none; border-top: 1px solid var(--rule); }
 
-    .section-tag {
-      display: inline-block;
-      margin-bottom: 14px;
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .18em;
-      text-transform: uppercase;
+    /* ─── ABOUT ─── */
+    .about {
+      padding: 80px 0;
     }
 
-    h2 {
-      margin: 0;
-      font-size: clamp(34px, 4.5vw, 60px);
-      line-height: .96;
-      letter-spacing: -0.06em;
-    }
-
-    .section-intro {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: end;
-      margin-bottom: 52px;
-    }
-
-    .section-intro p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.6;
-    }
-
-    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 64px;
       align-items: center;
     }
 
-    .instructor-card {
+    .about h2 {
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: .96;
+      letter-spacing: -0.06em;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      color: #3b4a41;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .about p:last-of-type { margin-bottom: 28px; }
+
+    .cred-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .cred {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .cred::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--pale);
+      border: 2px solid var(--green);
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 10l3.5 3.5L15 7' stroke='%231e5540' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .about-visual {
       position: relative;
+    }
+
+    .visual-card {
       border-radius: 12px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #c8ddd0 0%, #a8c9b6 100%);
-      min-height: 480px;
+      background: var(--green);
+      padding: 36px;
+      color: #fff;
+      min-height: 440px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 28px;
-      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .instructor-silhouette {
+    .visual-card::before {
+      content: "";
       position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: -40px;
+      right: -40px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
     }
 
-    .instructor-silhouette svg {
-      width: 68%;
-      height: auto;
-      opacity: .22;
+    .visual-card::after {
+      content: "";
+      position: absolute;
+      top: 60px;
+      left: -30px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.04);
     }
 
-    .instructor-badge {
+    .vc-quote {
       position: relative;
       z-index: 2;
-      padding: 18px 20px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,.9);
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #fff;
     }
 
-    .instructor-badge strong { font-size: 17px; letter-spacing: -0.03em; }
-    .instructor-badge span { display: block; color: var(--muted); font-size: 13px; font-weight: 600; margin-top: 3px; }
-
-    .about-content h2 { margin-bottom: 20px; }
-
-    .about-content p {
-      color: #3b4840;
-      font-size: 17px;
-      line-height: 1.68;
-      margin: 0 0 16px;
+    .vc-name {
+      position: relative;
+      z-index: 2;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,.6);
     }
 
-    .about-content p:last-of-type { margin-bottom: 28px; }
-
-    /* ── WHY CHOOSE ── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 16px;
+    .vc-stat {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      z-index: 2;
     }
 
-    .why-card {
-      padding: 28px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
-      transition: box-shadow .2s, transform .2s;
+    .vc-stat strong {
+      display: block;
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      line-height: 1;
+      color: rgba(255,255,255,.9);
     }
 
-    .why-card:hover { transform: translateY(-3px); box-shadow: 0 16px 42px rgba(23,32,27,.1); }
-
-    .why-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border-radius: 10px;
-      background: var(--green-pale);
-      margin-bottom: 18px;
-      font-size: 22px;
+    .vc-stat span {
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255,255,255,.5);
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    .why-card h3 { margin: 0 0 10px; font-size: 19px; letter-spacing: -0.04em; }
-    .why-card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.58; }
+    /* ─── SERVICES ─── */
+    .services {
+      padding: 80px 0;
+    }
 
-    /* ── SERVICES ── */
-    .services-grid {
+    .services h2 {
+      font-size: clamp(30px, 4vw, 52px);
+      letter-spacing: -0.06em;
+      line-height: .96;
+      margin-bottom: 8px;
+    }
+
+    .services-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .services-intro p {
+      color: var(--mid);
+      font-size: 16px;
+      max-width: 42ch;
+    }
+
+    .service-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 14px;
     }
 
-    .service-card {
-      padding: 32px;
+    .sc {
+      background: var(--white);
+      border: 1px solid var(--rule);
       border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
+      padding: 28px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      transition: box-shadow .2s, transform .2s;
+      gap: 10px;
+      transition: box-shadow .18s, transform .18s;
     }
 
-    .service-card:hover { transform: translateY(-3px); box-shadow: 0 16px 42px rgba(23,32,27,.1); }
+    .sc:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(24,33,28,.09); }
 
-    .service-card.accent {
+    .sc.featured {
       background: var(--green);
       border-color: transparent;
       color: #fff;
     }
 
-    .service-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: var(--green-pale);
-      color: var(--green);
+    .sc-label {
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      width: fit-content;
+      color: var(--green);
     }
 
-    .service-card.accent .service-tag {
-      background: rgba(255,255,255,.18);
-      color: #fff;
+    .sc.featured .sc-label { color: rgba(255,255,255,.55); }
+
+    .sc h3 {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1.1;
     }
 
-    .service-card h3 { margin: 0; font-size: 24px; letter-spacing: -0.05em; line-height: 1.1; }
+    .sc p {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--mid);
+      flex: 1;
+    }
 
-    .service-card p { margin: 0; font-size: 15px; line-height: 1.6; flex: 1; }
-    .service-card.accent p { color: rgba(255,255,255,.8); }
+    .sc.featured p { color: rgba(255,255,255,.72); }
 
-    .service-bullets {
+    .sc ul {
       list-style: none;
-      margin: 0;
-      padding: 0;
       display: grid;
-      gap: 7px;
+      gap: 6px;
     }
 
-    .service-bullets li {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
+    .sc ul li {
       font-size: 14px;
       font-weight: 600;
+      padding-left: 16px;
+      position: relative;
     }
 
-    .service-bullets li::before {
-      content: "•";
+    .sc ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
       color: var(--green);
       font-weight: 800;
-      flex-shrink: 0;
-      margin-top: 1px;
     }
 
-    .service-card.accent .service-bullets li::before { color: var(--yellow); }
+    .sc.featured ul li::before { color: var(--gold); }
 
-    .service-card .button { margin-top: 6px; align-self: flex-start; }
+    .sc .btn { align-self: flex-start; margin-top: 6px; }
 
-    /* ── MIDPAGE CTA ── */
-    .mid-cta {
-      background: var(--green);
-      border-radius: 16px;
-      padding: 56px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-      margin: 0 0 88px;
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      padding: 80px 0;
     }
 
-    .mid-cta h2 { color: #fff; max-width: 20ch; }
-    .mid-cta p { color: rgba(255,255,255,.76); font-size: 17px; margin: 12px 0 0; max-width: 42ch; }
+    .testimonials h2 {
+      font-size: clamp(28px, 3.5vw, 46px);
+      letter-spacing: -0.06em;
+      margin-bottom: 32px;
+    }
 
-    .mid-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
 
-    /* ── CONTACT ── */
+    .review {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 15px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .review blockquote {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #2e3e36;
+      margin-bottom: 18px;
+      font-style: normal;
+    }
+
+    .reviewer {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--mid);
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      padding: 80px 0;
+    }
+
     .contact-grid {
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 16px;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 14px;
       align-items: stretch;
     }
 
-    .contact-info {
-      padding: 36px;
-      border-radius: 12px;
+    .contact-left {
       background: var(--ink);
+      border-radius: 12px;
+      padding: 36px;
       color: #fff;
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      justify-content: space-between;
+      gap: 32px;
     }
 
-    .contact-info h2 { color: #fff; max-width: 12ch; }
-    .contact-info p { color: rgba(255,255,255,.7); font-size: 16px; line-height: 1.65; margin: 0; }
+    .contact-left h2 {
+      font-size: clamp(26px, 3vw, 40px);
+      letter-spacing: -0.06em;
+      line-height: 1;
+      color: #fff;
+    }
 
-    .contact-details {
-      display: grid;
+    .contact-left p {
+      color: rgba(255,255,255,.6);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
       gap: 12px;
     }
 
-    .contact-detail {
+    .contact-link {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 13px;
       font-size: 15px;
       font-weight: 700;
+      color: #fff;
     }
 
-    .contact-detail-icon {
-      width: 40px;
-      height: 40px;
+    .contact-link-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(255,255,255,.1);
+      border-radius: 8px;
       display: grid;
       place-items: center;
-      border-radius: 8px;
-      background: rgba(255,255,255,.1);
-      font-size: 17px;
       flex-shrink: 0;
+      font-size: 16px;
     }
 
-    .contact-form-panel {
-      padding: 36px;
+    .contact-right {
+      background: var(--white);
+      border: 1px solid var(--rule);
       border-radius: 12px;
-      border: 1px solid var(--line);
-      background: #fff;
+      padding: 36px;
     }
 
-    .form-title { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.04em; }
-    .form-sub { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
+    .contact-right h3 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 4px;
+    }
 
-    .form { display: grid; gap: 11px; }
+    .contact-right > p {
+      color: var(--mid);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-    .form input,
-    .form select,
-    .form textarea {
+    .form-group { display: flex; flex-direction: column; gap: 10px; }
+
+    input, select, textarea {
       width: 100%;
-      border: 1.5px solid var(--line);
+      border: 1.5px solid var(--rule);
       border-radius: 8px;
-      background: var(--paper);
-      padding: 13px 15px;
+      background: var(--bg);
+      padding: 12px 14px;
+      font: 600 14px/1.4 Manrope, sans-serif;
       color: var(--ink);
-      font: 600 15px/1.4 Manrope, sans-serif;
       outline: none;
-      transition: border-color .15s, box-shadow .15s;
+      transition: border-color .14s, box-shadow .14s;
     }
 
-    .form select { cursor: pointer; }
-
-    .form textarea { min-height: 108px; resize: vertical; }
-
-    .form input:focus,
-    .form select:focus,
-    .form textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(35,92,69,.1);
+      box-shadow: 0 0 0 3px rgba(30,85,64,.1);
     }
 
-    .form .button { width: 100%; min-height: 50px; font-size: 15px; margin-top: 4px; }
+    textarea { min-height: 100px; resize: vertical; }
 
-    /* ── FOOTER ── */
+    select { cursor: pointer; }
+
+    .submit-btn {
+      width: 100%;
+      height: 50px;
+      font-size: 15px;
+      font-weight: 800;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .15s, transform .15s, box-shadow .15s;
+    }
+
+    .submit-btn:hover {
+      background: var(--green2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(30,85,64,.26);
+    }
+
+    /* ─── FOOTER ─── */
     footer {
-      padding: 0 0 36px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 600;
+      border-top: 1px solid var(--rule);
+      padding: 24px 0;
     }
 
-    .footer-row {
+    .footer-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      border-top: 1px solid var(--line);
-      padding-top: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
     }
 
-    .footer-links {
-      display: flex;
-      gap: 20px;
+    .footer-right { display: flex; gap: 20px; }
+    .footer-right a:hover { color: var(--ink); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      .hero, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding: 40px 0 60px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: 1fr; }
+      .services-intro { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .nav-links a:not(.btn-dark) { display: none; }
+      .scene { min-height: 440px; }
     }
 
-    .footer-links a:hover { color: var(--ink); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero,
-      .about-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero { min-height: auto; padding: 36px 0 60px; }
-
-      .section-intro { grid-template-columns: 1fr; gap: 16px; }
-
-      .services-grid { grid-template-columns: 1fr; }
-
-      .why-grid { grid-template-columns: 1fr 1fr; }
-
-      .nav-link { display: none; }
-
-      .nav-phone span { display: none; }
-
-      .mid-cta { padding: 36px 28px; }
-
-      .mid-cta-actions { width: 100%; }
-    }
-
-    @media (max-width: 600px) {
-      .shell { width: calc(100% - 28px); }
-
-      h1 { font-size: clamp(46px, 16vw, 78px); }
-
-      .why-grid { grid-template-columns: 1fr; }
-
-      .form-row { grid-template-columns: 1fr; }
-
-      .scene-wrap { min-height: 440px; }
-
-      .footer-row { flex-direction: column; gap: 12px; text-align: center; }
-
-      .footer-links { flex-direction: column; gap: 8px; align-items: center; }
+    @media (max-width: 560px) {
+      .wrap { width: calc(100% - 28px); }
+      h1 { font-size: clamp(42px, 15vw, 70px); }
+      .hero-meta { gap: 20px; }
+      .field-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <header class="topbar">
-    <div class="shell topbar-inner">
-      <a class="brand" href="#top">
-        <span class="brand-mark">BPD</span>
-        <span class="brand-text">
-          <strong>Betterprepared Drivers</strong>
-          <small>Professional driving lessons</small>
+  <nav>
+    <div class="wrap nav-inner">
+      <a class="logo" href="#top">
+        <span class="logo-mark">BPD</span>
+        <span>
+          <span class="logo-name">Betterprepared Drivers</span>
+          <span class="logo-sub">Professional driving lessons</span>
         </span>
       </a>
-      <nav class="nav" aria-label="Main">
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#services">Services</a>
-        <a class="nav-link" href="#contact">Contact</a>
-        <a class="nav-phone" href="tel:+61000000000">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.53 6.53l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>Call now</span>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-phone" href="tel:+61400000000">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6.53 6.53l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0400 000 000
         </a>
-        <a class="button" href="#contact">Book a lesson</a>
-      </nav>
+        <a class="btn btn-dark" href="#contact">Book a lesson</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main id="top">
 
-    <!-- ── HERO ── -->
-    <div class="shell hero">
+    <!-- HERO -->
+    <div class="wrap hero">
       <div>
-        <div class="eyebrow">BPD learner driver training</div>
-        <h1>Calm, confident driving lessons.</h1>
-        <p class="lede">Helping learner and experienced drivers build real confidence, safe habits and test-ready skills — at a pace that works for you.</p>
+        <h1>Get your Ps. No stress.</h1>
+        <p class="hero-sub">Structured, patient driving lessons for learners who want to pass first time — and actually know what they're doing behind the wheel.</p>
         <div class="hero-actions">
-          <a class="button" href="#contact">Book a lesson</a>
-          <a class="button outline" href="#services">See all services</a>
+          <a class="btn btn-green" href="#contact">Book a lesson</a>
+          <a class="btn btn-outline" href="tel:+61400000000">Call 0400 000 000</a>
         </div>
-        <div class="trust-pills">
-          <span class="trust-pill">Automatic &amp; manual vehicles</span>
-          <span class="trust-pill">Learner to P-plate</span>
-          <span class="trust-pill">Test preparation</span>
-          <span class="trust-pill">Refresher lessons</span>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <strong>Auto + Manual</strong>
+            <span>Both available</span>
+          </div>
+          <div class="hero-meta-item">
+            <strong>All ages</strong>
+            <span>16 to 60+</span>
+          </div>
+          <div class="hero-meta-item">
+            <strong>Test prep</strong>
+            <span>L to P and beyond</span>
+          </div>
         </div>
       </div>
 
-      <div class="scene-wrap" aria-label="Interactive 3D driving lesson scene">
-        <canvas id="drive-scene"></canvas>
-        <div class="scene-label">
+      <div class="scene">
+        <canvas id="canvas"></canvas>
+        <div class="scene-footer">
           <div>
-            <strong>Interactive 3D scene</strong>
-            <span>Move your pointer to rotate the view</span>
+            <p>Interactive 3D lesson preview</p>
+            <span>Move your mouse to look around</span>
           </div>
-          <span class="pill">Dual-control vehicle</span>
+          <span class="badge">Dual-control car</span>
         </div>
       </div>
     </div>
 
-    <!-- ── ABOUT ── -->
-    <section id="about">
-      <div class="shell">
-        <div class="section-intro">
-          <div>
-            <span class="section-tag">About your instructor</span>
-            <h2>Meet your local driving instructor.</h2>
-          </div>
-          <p>Fully qualified, professional instruction with a focus on building genuine confidence behind the wheel — not just passing a test.</p>
-        </div>
-        <div class="about-grid">
-          <div class="instructor-card">
-            <div class="instructor-silhouette">
-              <svg viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="100" cy="60" rx="46" ry="50" fill="rgba(35,92,69,0.9)"/>
-                <path d="M20 320 C20 220 180 220 180 320Z" fill="rgba(35,92,69,0.9)"/>
-                <rect x="56" y="108" width="88" height="118" rx="14" fill="rgba(35,92,69,0.9)"/>
-              </svg>
-            </div>
-            <div class="instructor-badge">
-              <strong>Fully qualified instructor</strong>
-              <span>Professional &amp; patient — all experience levels welcome</span>
-            </div>
-          </div>
+    <hr>
 
-          <div class="about-content">
-            <h2>Patient, practical and fully qualified.</h2>
-            <p>Betterprepared Drivers offers structured, supportive driving lessons tailored to each learner's needs — available in both automatic and manual vehicles.</p>
-            <p>With experience teaching drivers of all ages and skill levels, the focus is always on building confidence behind the wheel while developing safe, real-world driving habits that last well beyond test day.</p>
-            <p>Lessons are adapted to suit nervous beginners, learner drivers preparing for their driving test, and experienced drivers looking to refresh their skills.</p>
-            <a class="button" href="#contact">Make an enquiry</a>
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <div>
+          <h2>Your instructor, not just a car and a timer.</h2>
+          <p>Betterprepared Drivers was started because most learners don't fail from lack of hours — they fail from lack of proper feedback. Every lesson is structured around what you actually need to work on, not a generic checklist.</p>
+          <p>Lessons are available in both automatic and manual vehicles, and suit everyone from nervous first-timers to experienced drivers who want to tighten up before their test.</p>
+          <div class="cred-list">
+            <div class="cred">Fully licensed and qualified driving instructor</div>
+            <div class="cred">Automatic and manual vehicles</div>
+            <div class="cred">Learners, refreshers and test preparation</div>
+            <div class="cred">Flexible scheduling, including weekends</div>
+          </div>
+          <a class="btn btn-green" href="#contact">Make an enquiry</a>
+        </div>
+
+        <div class="about-visual">
+          <div class="visual-card">
+            <div class="vc-stat">
+              <strong>1:1</strong>
+              <span>Every lesson</span>
+            </div>
+            <p class="vc-quote">"I teach you to drive — not just to pass."</p>
+            <p class="vc-name">Betterprepared Drivers instructor</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── WHY CHOOSE ── -->
-    <section>
-      <div class="shell">
-        <div class="section-intro">
-          <div>
-            <span class="section-tag">Why choose BPD</span>
-            <h2>Learn to drive with confidence.</h2>
-          </div>
-          <p>Three things that set Betterprepared Drivers apart from the rest.</p>
-        </div>
-        <div class="why-grid">
-          <div class="why-card">
-            <div class="why-icon">🎯</div>
-            <h3>Patient, supportive instruction</h3>
-            <p>Calm lessons designed to build confidence at your pace — no pressure, no rush.</p>
-          </div>
-          <div class="why-card">
-            <div class="why-icon">🗺️</div>
-            <h3>Local road knowledge</h3>
-            <p>Familiar with local roads, traffic conditions and test route expectations so you feel fully prepared.</p>
-          </div>
-          <div class="why-card">
-            <div class="why-icon">🚗</div>
-            <h3>Auto &amp; manual vehicles</h3>
-            <p>Lessons available in both automatic and manual — suitable for beginners, test prep and refreshers.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <hr>
 
-    <!-- ── SERVICES ── -->
-    <section id="services">
-      <div class="shell">
-        <div class="section-intro">
+    <!-- SERVICES -->
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="services-intro">
           <div>
-            <span class="section-tag">Driving services</span>
             <h2>Lessons for every stage.</h2>
+            <p>Whether you've never touched a steering wheel or you're booked in for your test next week, there's a lesson that fits.</p>
           </div>
-          <p>A range of driving lessons designed to suit learners at every stage of their driving journey.</p>
+          <a class="btn btn-outline" href="#contact">Get a quote</a>
         </div>
-        <div class="services-grid">
-
-          <div class="service-card accent">
-            <div class="service-tag">Government program</div>
-            <h3>Free Learner Driving Lesson</h3>
-            <p>Eligible learner drivers may be able to access a free driving lesson through a government learner driver support program — check your eligibility today.</p>
-            <ul class="service-bullets">
-              <li>Eligible learner drivers aged 16–19</li>
+        <div class="service-grid">
+          <div class="sc featured">
+            <div class="sc-label">Government program</div>
+            <h3>Free Learner Lesson</h3>
+            <p>Eligible Victorian learners aged 16–19 may be able to access a free professional driving lesson through the myLearnersDrive program.</p>
+            <ul>
+              <li>Eligible learner drivers 16–19</li>
               <li>Lesson with a qualified instructor</li>
               <li>Supervising driver included</li>
-              <li>Calm, confidence-building support</li>
             </ul>
-            <a class="button white" href="#contact">Find out more</a>
+            <a class="btn btn-white" href="#contact">Check eligibility</a>
           </div>
 
-          <div class="service-card">
-            <div class="service-tag">Single lesson</div>
-            <h3>Single Driving Lesson</h3>
-            <p>One-on-one lessons tailored to your experience and confidence level, available in manual or automatic vehicles at a time that suits you.</p>
-            <ul class="service-bullets">
-              <li>Fully personalised to your skill level</li>
-              <li>Automatic or manual vehicle</li>
-              <li>Honest feedback after every session</li>
+          <div class="sc">
+            <div class="sc-label">Most popular</div>
+            <h3>Single Lesson</h3>
+            <p>One-on-one lessons tailored to where you're at. Honest feedback, proper coaching — not just driving around.</p>
+            <ul>
+              <li>Auto or manual vehicle</li>
+              <li>Beginner to advanced</li>
+              <li>Debrief at the end of every session</li>
             </ul>
-            <a class="button outline" href="#contact">Enquire now</a>
+            <a class="btn btn-outline" href="#contact">Book now</a>
           </div>
 
-          <div class="service-card">
-            <div class="service-tag">Best value</div>
+          <div class="sc">
+            <div class="sc-label">Save money</div>
             <h3>Lesson Packages</h3>
-            <p>Discounted lesson packages designed to build skills progressively, with flexible options to suit different learning goals and budgets.</p>
-            <ul class="service-bullets">
-              <li>Structured lesson sequence</li>
-              <li>Savings vs single lessons</li>
+            <p>A sequence of lessons designed to build skills progressively. Discounted rate versus booking individually.</p>
+            <ul>
+              <li>Structured lesson plan</li>
+              <li>Better value than singles</li>
               <li>Flexible scheduling</li>
             </ul>
-            <a class="button outline" href="#contact">Get a quote</a>
+            <a class="btn btn-outline" href="#contact">Get a quote</a>
           </div>
 
-          <div class="service-card">
-            <div class="service-tag">Test ready</div>
-            <h3>Driving Test Preparation</h3>
-            <p>Focused preparation covering the skills and driving behaviours assessed during the driving test — so there are no surprises on the day.</p>
-            <ul class="service-bullets">
-              <li>Mock test assessment</li>
-              <li>Test route familiarity</li>
-              <li>Confidence-building feedback</li>
+          <div class="sc">
+            <div class="sc-label">Before your test</div>
+            <h3>Test Preparation</h3>
+            <p>Focused on exactly what's assessed on test day. Mock assessment, feedback on any weak spots, route familiarity.</p>
+            <ul>
+              <li>Full mock test assessment</li>
+              <li>Test route practice</li>
+              <li>Covers common fail points</li>
             </ul>
-            <a class="button outline" href="#contact">Book prep lesson</a>
+            <a class="btn btn-outline" href="#contact">Book prep lesson</a>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ── MID CTA ── -->
-    <div class="shell">
-      <div class="mid-cta">
-        <div>
-          <h2>Ready to get started?</h2>
-          <p>If you're looking for a calm, professional driving instructor, get in touch to discuss lesson options and availability.</p>
-        </div>
-        <div class="mid-cta-actions">
-          <a class="button white" href="#contact">Make an enquiry</a>
-          <a class="button outline" style="border-color:rgba(255,255,255,.3);color:#fff;" href="tel:+61000000000">Call now</a>
+    <hr>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="reviews">
+      <div class="wrap">
+        <h2>What students say.</h2>
+        <div class="review-grid">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <blockquote>"I'd had lessons before with another instructor and always left feeling confused. First lesson with BPD and I actually understood what I was doing wrong with my merging. Passed my test three weeks later."</blockquote>
+            <div class="reviewer">Mia T. — passed first attempt</div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Really calm, never made me feel stupid for not knowing something. I'm 34 and finally got my licence after putting it off for years. Couldn't recommend enough."</blockquote>
+            <div class="reviewer">Daniel R. — refresher student</div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Did the test prep package. Best money I spent. Went in knowing exactly what to expect, which takes a lot of the nerves away. Passed with no critical errors."</blockquote>
+            <div class="reviewer">Priya S. — test prep student</div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- ── CONTACT ── -->
-    <section id="contact">
-      <div class="shell contact-grid">
+    <hr>
 
-        <div class="contact-info">
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="contact-left">
           <div>
-            <span class="section-tag" style="color:rgba(255,255,255,.5);">Get in touch</span>
-            <h2>Book your first lesson today.</h2>
+            <h2>Book a lesson or ask a question.</h2>
+            <p style="margin-top:14px;">Send your suburb, experience level and preferred times. We'll come back to you with availability and the best starting point.</p>
           </div>
-          <p>Send your preferred lesson time, suburb and current driving experience. We'll reply with availability and the best starting point for you.</p>
-          <div class="contact-details">
-            <div class="contact-detail">
-              <div class="contact-detail-icon">📞</div>
-              <span><a href="tel:+61000000000" style="color:#fff;">Call: 000 000 000</a></span>
-            </div>
-            <div class="contact-detail">
-              <div class="contact-detail-icon">✉️</div>
-              <span><a href="mailto:bookings@example.com" style="color:#fff;">bookings@example.com</a></span>
-            </div>
+          <div class="contact-links">
+            <a class="contact-link" href="tel:+61400000000">
+              <span class="contact-link-icon">📞</span>
+              0400 000 000
+            </a>
+            <a class="contact-link" href="mailto:bookings@betterprepared.com.au">
+              <span class="contact-link-icon">✉️</span>
+              bookings@betterprepared.com.au
+            </a>
           </div>
         </div>
 
-        <div class="contact-form-panel">
-          <p class="form-title">Send an enquiry</p>
-          <p class="form-sub">We'll get back to you with availability and lesson options.</p>
-          <form class="form" action="mailto:bookings@example.com" method="post" enctype="text/plain">
-            <div class="form-row">
-              <input name="name" autocomplete="name" placeholder="Your name" aria-label="Your name">
-              <input name="phone" autocomplete="tel" placeholder="Phone number" aria-label="Phone number">
+        <div class="contact-right">
+          <h3>Send an enquiry</h3>
+          <p>We'll reply within 24 hours.</p>
+          <form class="form-group" action="mailto:bookings@betterprepared.com.au" method="post" enctype="text/plain">
+            <div class="field-row">
+              <input name="name" placeholder="Your name" autocomplete="name">
+              <input name="phone" placeholder="Phone number" autocomplete="tel">
             </div>
-            <input name="area" placeholder="Suburb or pickup area" aria-label="Suburb or pickup area">
-            <select name="lesson_type" aria-label="Lesson type">
+            <input name="suburb" placeholder="Your suburb">
+            <select name="type">
               <option value="" disabled selected>Type of lesson</option>
-              <option>Single lesson</option>
+              <option>Single lesson — automatic</option>
+              <option>Single lesson — manual</option>
               <option>Lesson package</option>
               <option>Test preparation</option>
-              <option>Refresher lesson</option>
               <option>Free learner lesson (eligibility check)</option>
+              <option>Refresher lesson</option>
             </select>
-            <textarea name="message" placeholder="Any details about your experience level or preferred lesson times"></textarea>
-            <button class="button" type="submit">Send enquiry</button>
+            <textarea name="message" placeholder="Anything else — experience level, availability, questions"></textarea>
+            <button class="submit-btn" type="submit">Send enquiry</button>
           </form>
         </div>
-
       </div>
     </section>
 
   </main>
 
   <footer>
-    <div class="shell footer-row">
-      <span>© 2026 Betterprepared Drivers. All rights reserved.</span>
-      <div class="footer-links">
+    <div class="wrap footer-inner">
+      <span>© 2026 Betterprepared Drivers</span>
+      <div class="footer-right">
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
@@ -951,230 +978,182 @@
   <script type="module">
     import * as THREE from "https://unpkg.com/three@0.163.0/build/three.module.js";
 
-    const canvas = document.querySelector("#drive-scene");
+    const el = document.getElementById("canvas");
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xf0f5f1, 18, 38);
+    scene.fog = new THREE.Fog(0xeef3ee, 18, 40);
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const renderer = new THREE.WebGLRenderer({ canvas: el, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80);
-    camera.position.set(6.2, 4.6, 9.2);
-    camera.lookAt(0, .75, 0);
+    const cam = new THREE.PerspectiveCamera(36, 1, .1, 80);
+    cam.position.set(6.4, 4.8, 9.4);
+    cam.lookAt(0, .8, 0);
 
-    const hemi = new THREE.HemisphereLight(0xffffff, 0xa0b09a, 2.4);
-    scene.add(hemi);
-
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xa8b8a0, 2.2));
     const sun = new THREE.DirectionalLight(0xfffdf6, 3.0);
-    sun.position.set(4, 9, 6);
+    sun.position.set(5, 10, 7);
     sun.castShadow = true;
     sun.shadow.mapSize.set(1024, 1024);
     scene.add(sun);
-
-    const fill = new THREE.DirectionalLight(0xd0e8d8, 0.8);
-    fill.position.set(-4, 3, -2);
+    const fill = new THREE.DirectionalLight(0xd4ead8, .7);
+    fill.position.set(-5, 3, -3);
     scene.add(fill);
 
-    const M = (color, roughness = .75, metalness = .02) =>
-      new THREE.MeshStandardMaterial({ color, roughness, metalness });
-
-    const matBody  = M(0x235c45);
-    const matGlass = new THREE.MeshPhysicalMaterial({ color: 0xb8d8e8, roughness: .12, transmission: .15, transparent: true, opacity: .75 });
-    const matDark  = M(0x17201b, .65, .08);
-    const matTyre  = M(0x111713, .88, .02);
-    const matRoad  = M(0x2e3830, .88);
-    const matLine  = M(0xe9bd4f, .5);
-    const matWhite = M(0xffffff, .5);
-    const matGrass = M(0xd0e4d0, .92);
-    const matPole  = M(0x8a9590, .7, .15);
+    const M = (c, r = .75, m = .02) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: m });
 
     const world = new THREE.Group();
     scene.add(world);
 
     // Ground
-    const ground = new THREE.Mesh(new THREE.PlaneGeometry(32, 32), matGrass);
-    ground.rotation.x = -Math.PI / 2;
-    ground.receiveShadow = true;
-    world.add(ground);
+    const gnd = new THREE.Mesh(new THREE.PlaneGeometry(34, 34), M(0xd4e4d4, .94));
+    gnd.rotation.x = -Math.PI / 2;
+    gnd.receiveShadow = true;
+    world.add(gnd);
 
     // Road
-    const road = new THREE.Mesh(new THREE.BoxGeometry(5.4, .08, 28), matRoad);
+    const road = new THREE.Mesh(new THREE.BoxGeometry(5.6, .08, 30), M(0x2c3830, .88));
     road.position.y = .02;
-    road.rotation.y = -.22;
+    road.rotation.y = -.2;
     road.receiveShadow = true;
     world.add(road);
 
-    // Road centre line
-    for (let i = -6; i <= 6; i++) {
-      const dash = new THREE.Mesh(new THREE.BoxGeometry(.16, .04, 1.1), matLine);
-      dash.position.set(0, .07, i * 2.3);
-      dash.rotation.y = road.rotation.y;
-      world.add(dash);
+    // Centre dashes
+    for (let i = -7; i <= 7; i++) {
+      const d = new THREE.Mesh(new THREE.BoxGeometry(.14, .04, 1.0), M(0xe8bb4a, .5));
+      d.position.set(0, .07, i * 2.4);
+      d.rotation.y = road.rotation.y;
+      world.add(d);
     }
 
-    // Road edge lines
-    [-2.3, 2.3].forEach(xOff => {
-      const edge = new THREE.Mesh(new THREE.BoxGeometry(.08, .03, 28), matWhite);
-      edge.position.set(xOff, .05, 0);
-      edge.rotation.y = road.rotation.y;
-      world.add(edge);
+    // Edge lines
+    [-2.4, 2.4].forEach(x => {
+      const e = new THREE.Mesh(new THREE.BoxGeometry(.07, .03, 30), M(0xffffff, .5));
+      e.position.set(x, .05, 0);
+      e.rotation.y = road.rotation.y;
+      world.add(e);
     });
 
-    // ── Car ──
+    // ── Car body ──
     const car = new THREE.Group();
-    car.position.set(.1, .52, .25);
-    car.rotation.y = -.22;
+    car.position.set(0, .52, .2);
+    car.rotation.y = -.2;
     world.add(car);
 
-    // Body
-    const body = new THREE.Mesh(new THREE.BoxGeometry(3.7, .72, 1.76), matBody);
-    body.castShadow = true;
-    body.receiveShadow = true;
-    car.add(body);
+    const matGreen = M(0x1e5540);
+    const matGlass = new THREE.MeshPhysicalMaterial({ color: 0xbbd5e8, roughness: .1, transmission: .12, transparent: true, opacity: .78 });
 
-    // Cabin
-    const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.78, .86, 1.42), matGlass);
-    cabin.position.set(.12, .74, 0);
-    cabin.castShadow = true;
+    car.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(3.8, .72, 1.78), matGreen), { castShadow: true, receiveShadow: true }));
+
+    const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.84, .88, 1.44), matGlass);
+    cabin.position.set(.1, .75, 0); cabin.castShadow = true;
     car.add(cabin);
 
-    // Bonnet
-    const bonnet = new THREE.Mesh(new THREE.BoxGeometry(1.2, .26, 1.56), matBody);
-    bonnet.position.set(-1.84, .27, 0);
-    bonnet.castShadow = true;
+    const bonnet = new THREE.Mesh(new THREE.BoxGeometry(1.18, .22, 1.58), matGreen);
+    bonnet.position.set(-1.88, .24, 0); bonnet.castShadow = true;
     car.add(bonnet);
 
-    // Boot
-    const boot = new THREE.Mesh(new THREE.BoxGeometry(.7, .42, 1.56), matBody);
-    boot.position.set(1.9, .1, 0);
-    boot.castShadow = true;
+    const boot = new THREE.Mesh(new THREE.BoxGeometry(.72, .38, 1.58), matGreen);
+    boot.position.set(1.94, .08, 0); boot.castShadow = true;
     car.add(boot);
 
-    // L plate sign on roof
-    const signBase = new THREE.Mesh(new THREE.BoxGeometry(.96, .44, .1), matWhite);
-    signBase.position.set(.22, 1.3, 0);
-    car.add(signBase);
-    const signL = new THREE.Mesh(new THREE.BoxGeometry(.28, .28, .12), matLine);
-    signL.position.set(.22, 1.3, .01);
-    car.add(signL);
+    // L-plate
+    const lp = new THREE.Mesh(new THREE.BoxGeometry(1.0, .46, .1), M(0xffffff, .5));
+    lp.position.set(.2, 1.34, 0);
+    car.add(lp);
+    const lc = new THREE.Mesh(new THREE.BoxGeometry(.3, .3, .12), M(0xe8bb4a, .5));
+    lc.position.set(.2, 1.34, .02);
+    car.add(lc);
 
-    // Headlights
-    [[-.18, .34], [.18, .34]].forEach(([z]) => {
-      const hl = new THREE.Mesh(new THREE.BoxGeometry(.08, .22, .38), matLine);
-      hl.position.set(-1.92, .08, z);
+    // Lights
+    [-.38, .38].forEach(z => {
+      const hl = new THREE.Mesh(new THREE.BoxGeometry(.07, .2, .32), M(0xe8bb4a, .4));
+      hl.position.set(-1.94, .08, z);
       car.add(hl);
-    });
-
-    // Taillights
-    [[-.18], [.18]].forEach(([z]) => {
-      const tl = new THREE.Mesh(new THREE.BoxGeometry(.06, .2, .35), M(0xcc3333, .5));
-      tl.position.set(1.96, .06, z);
+      const tl = new THREE.Mesh(new THREE.BoxGeometry(.06, .18, .3), M(0xcc3030, .4));
+      tl.position.set(1.98, .08, z);
       car.add(tl);
     });
 
     // Wheels
-    const wheelGeo = new THREE.CylinderGeometry(.38, .38, .38, 28);
-    const hubGeo = new THREE.CylinderGeometry(.2, .2, .4, 20);
-    [[-1.2, -.26, -.9], [1.2, -.26, -.9], [-1.2, -.26, .9], [1.2, -.26, .9]].forEach(([x,y,z]) => {
-      const w = new THREE.Mesh(wheelGeo, matTyre);
-      w.rotation.z = Math.PI / 2;
-      w.position.set(x, y, z);
-      w.castShadow = true;
+    const wg = new THREE.CylinderGeometry(.38, .38, .38, 28);
+    const hg = new THREE.CylinderGeometry(.19, .19, .4, 20);
+    [[-1.22, -.26, -.92], [1.22, -.26, -.92], [-1.22, -.26, .92], [1.22, -.26, .92]].forEach(([x,y,z]) => {
+      const w = new THREE.Mesh(wg, M(0x101512, .88));
+      w.rotation.z = Math.PI / 2; w.position.set(x,y,z); w.castShadow = true;
       car.add(w);
-      const h = new THREE.Mesh(hubGeo, matLine);
-      h.rotation.z = Math.PI / 2;
-      h.position.set(x, y, z);
+      const h = new THREE.Mesh(hg, M(0xe8bb4a, .5));
+      h.rotation.z = Math.PI / 2; h.position.set(x,y,z);
       car.add(h);
     });
 
     // ── Traffic cones ──
-    const coneGeo = new THREE.ConeGeometry(.17, .54, 24);
-    const coneBase = new THREE.CylinderGeometry(.26, .28, .07, 24);
-    const coneMat = M(0xf0781a, .6);
-    const coneBaseMat = M(0x1a1a1a, .8);
-    [-3.8, -2.2, -.6, 1.0, 2.6].forEach((z, i) => {
-      const cg = new THREE.Group();
-      cg.position.set(3.2 + Math.sin(i * 1.3) * .4, 0, z);
-      const cone = new THREE.Mesh(coneGeo, coneMat);
-      cone.position.y = .31;
-      cone.castShadow = true;
-      cg.add(cone);
-      // white stripe
-      const stripe = new THREE.Mesh(new THREE.CylinderGeometry(.175, .155, .1, 24), matWhite);
-      stripe.position.y = .38;
-      cg.add(stripe);
-      const base = new THREE.Mesh(coneBase, coneBaseMat);
-      base.position.y = .035;
-      cg.add(base);
-      world.add(cg);
+    const coneMat = M(0xf07018, .6);
+    const baseM = M(0x111111, .9);
+    [-4.2, -2.6, -1.0, .6, 2.2, 3.8].forEach((z, i) => {
+      const g = new THREE.Group();
+      g.position.set(3.3 + Math.sin(i * 1.4) * .5, 0, z);
+      const cone = new THREE.Mesh(new THREE.ConeGeometry(.16, .52, 22), coneMat);
+      cone.position.y = .3; cone.castShadow = true; g.add(cone);
+      const stripe = new THREE.Mesh(new THREE.CylinderGeometry(.168, .15, .09, 22), M(0xffffff, .5));
+      stripe.position.y = .36; g.add(stripe);
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(.26, .27, .06, 22), baseM);
+      base.position.y = .03; g.add(base);
+      world.add(g);
+    });
+
+    // ── Trees ──
+    const trunkM = M(0x8b6840, .9);
+    const leafM  = M(0x2d7848, .88);
+    [[-5.8,3.2],[-5.8,-2.0],[-5.8,-7.4],[6.2,4.0],[6.2,-1.6],[6.2,-7.0]].forEach(([x,z]) => {
+      const g = new THREE.Group(); g.position.set(x, 0, z);
+      const t = new THREE.Mesh(new THREE.CylinderGeometry(.1, .14, .88, 10), trunkM);
+      t.position.y = .44; t.castShadow = true; g.add(t);
+      const l = new THREE.Mesh(new THREE.SphereGeometry(.62, 10, 10), leafM);
+      l.position.y = 1.42; l.castShadow = true; g.add(l);
+      world.add(g);
     });
 
     // ── Road sign ──
-    const post = new THREE.Mesh(new THREE.CylinderGeometry(.04, .04, 1.6, 16), matPole);
-    post.position.set(-3.8, .8, -2.2);
-    post.castShadow = true;
+    const postM = M(0x8a9590, .7, .15);
+    const post = new THREE.Mesh(new THREE.CylinderGeometry(.04, .04, 1.6, 14), postM);
+    post.position.set(-3.9, .8, -2.4); post.castShadow = true;
     world.add(post);
-    const signboard = new THREE.Mesh(new THREE.BoxGeometry(1.4, .6, .08), matWhite);
-    signboard.position.set(-3.8, 1.64, -2.2);
-    signboard.rotation.y = .36;
-    signboard.castShadow = true;
-    world.add(signboard);
-    const signStripe = new THREE.Mesh(new THREE.BoxGeometry(1.0, .1, .1), matBody);
-    signStripe.position.set(-3.8, 1.66, -2.16);
-    signStripe.rotation.y = .36;
-    world.add(signStripe);
-
-    // ── Trees ──
-    const trunkGeo = new THREE.CylinderGeometry(.1, .14, .9, 10);
-    const foliageGeo = new THREE.SphereGeometry(.6, 10, 10);
-    const trunkMat = M(0x8b6a42, .9);
-    const foliageMat = M(0x2d7a4a, .88);
-    [[-5.5, 3.5], [-5.5, -2.2], [-5.5, -7.5], [5.8, 4.2], [5.8, -1.8], [5.8, -6.8]].forEach(([x, z]) => {
-      const tg = new THREE.Group();
-      tg.position.set(x, 0, z);
-      const trunk = new THREE.Mesh(trunkGeo, trunkMat);
-      trunk.position.y = .45;
-      trunk.castShadow = true;
-      tg.add(trunk);
-      const foliage = new THREE.Mesh(foliageGeo, foliageMat);
-      foliage.position.y = 1.4;
-      foliage.castShadow = true;
-      tg.add(foliage);
-      world.add(tg);
-    });
+    const sb = new THREE.Mesh(new THREE.BoxGeometry(1.38, .6, .08), M(0xffffff, .5));
+    sb.position.set(-3.9, 1.65, -2.4); sb.rotation.y = .34; sb.castShadow = true;
+    world.add(sb);
+    const ss = new THREE.Mesh(new THREE.BoxGeometry(.98, .1, .1), M(0x1e5540, .5));
+    ss.position.set(-3.9, 1.67, -2.35); ss.rotation.y = .34;
+    world.add(ss);
 
     // Pointer parallax
-    const pointer = { x: 0, y: 0 };
-    window.addEventListener("pointermove", e => {
-      pointer.x = (e.clientX / window.innerWidth - .5) * 2;
-      pointer.y = (e.clientY / window.innerHeight - .5) * 2;
+    const ptr = { x: 0, y: 0 };
+    addEventListener("pointermove", e => {
+      ptr.x = (e.clientX / innerWidth - .5) * 2;
+      ptr.y = (e.clientY / innerHeight - .5) * 2;
     });
 
     function resize() {
-      const r = canvas.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(r.width));
-      const h = Math.max(1, Math.floor(r.height));
+      const r = el.getBoundingClientRect();
+      const w = Math.max(1, r.width | 0), h = Math.max(1, r.height | 0);
       renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
+      cam.aspect = w / h;
+      cam.updateProjectionMatrix();
     }
 
-    window.addEventListener("resize", resize);
+    addEventListener("resize", resize);
     resize();
 
-    function tick(time) {
-      const t = time * .001;
+    (function tick(t) {
+      t *= .001;
       car.position.y = .54 + Math.sin(t * 1.8) * .022;
-      car.rotation.y = -.22 + Math.sin(t * .6) * .022;
-      world.rotation.y += ((pointer.x * .08) - world.rotation.y) * .038;
-      world.rotation.x += ((-pointer.y * .035) - world.rotation.x) * .038;
-      renderer.render(scene, camera);
+      car.rotation.y = -.2 + Math.sin(t * .65) * .02;
+      world.rotation.y += (ptr.x * .08 - world.rotation.y) * .04;
+      world.rotation.x += (-ptr.y * .034 - world.rotation.x) * .04;
+      renderer.render(scene, cam);
       requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame(tick);
+    })(0);
   </script>
 </body>
 </html>
