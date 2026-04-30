@@ -137,40 +137,13 @@
                 <input class="form-input" type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith" required>
               </div>
               <div>
-                <label class="form-label" for="phone">Phone number <span style="color:var(--green)">*</span></label>
-                <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="0400 000 000" required>
+                <label class="form-label" for="phone">Phone or email <span style="color:var(--green)">*</span></label>
+                <input class="form-input" type="text" id="phone" name="phone" autocomplete="tel" placeholder="0400 000 000 or email" required>
               </div>
             </div>
             <div>
-              <label class="form-label" for="suburb">Your suburb <span style="color:var(--green)">*</span></label>
-              <input class="form-input" type="text" id="suburb" name="suburb" placeholder="e.g. Richmond, Footscray, Dandenong" required>
-            </div>
-            <div>
-              <label class="form-label" for="lesson">Type of lesson</label>
-              <select class="form-select" id="lesson" name="lesson">
-                <option value="" disabled selected>Select a lesson type</option>
-                <option value="single-auto">Single lesson — automatic</option>
-                <option value="single-manual">Single lesson — manual</option>
-                <option value="package">Lesson package</option>
-                <option value="test">Test preparation</option>
-                <option value="free">Free learner lesson (eligibility check)</option>
-                <option value="refresher">Refresher lesson</option>
-              </select>
-            </div>
-            <div>
-              <label class="form-label" for="experience">Your driving experience</label>
-              <select class="form-select" id="experience" name="experience">
-                <option value="" disabled selected>Select your current level</option>
-                <option value="beginner">Never driven before</option>
-                <option value="some">Some experience, building confidence</option>
-                <option value="counting">Counting hours for test</option>
-                <option value="test-ready">Ready for test, need final prep</option>
-                <option value="refresher">Experienced driver, refreshing skills</option>
-              </select>
-            </div>
-            <div>
-              <label class="form-label" for="message">Anything else</label>
-              <textarea class="form-textarea" id="message" name="message" placeholder="Preferred days or times, specific things you'd like to work on, questions about lessons…"></textarea>
+              <label class="form-label" for="message">Anything else <span style="color:var(--faint);font-weight:400">(optional)</span></label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Suburb, lesson type, preferred times… or leave blank"></textarea>
             </div>
             <button class="form-submit" type="submit">Send enquiry →</button>
           </form>

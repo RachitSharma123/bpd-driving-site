@@ -204,9 +204,8 @@
   let open = false;
 
   const STEPS = [
-    { key: 'name',     q: "👋 Hi! Looking to book a driving lesson? I'll get you set up in 3 quick questions.\n\nWhat's your name?", placeholder: 'Your name', type: 'text' },
-    { key: 'location', q: (n) => `Nice to meet you, ${n}! 📍\n\nWhat suburb or area are you in?`, placeholder: 'Your suburb', type: 'text' },
-    { key: 'phone',    q: "Almost done! 📞\n\nWhat's the best number to reach you on?", placeholder: '04XX XXX XXX', type: 'tel' },
+    { key: 'name',  q: "👋 Hi! Looking to book a driving lesson?\n\nWhat's your name?", placeholder: 'Your name', type: 'text' },
+    { key: 'phone', q: (n) => `Thanks ${n}! 📞\n\nWhat's the best number or email to reach you on?`, placeholder: 'Phone or email', type: 'text' },
   ];
 
   /* ── Helpers ── */
@@ -287,8 +286,7 @@
         '🚗 <b>New BPD Lead — Chat Widget</b>',
         '',
         '👤 <b>Name:</b> ' + lead.name,
-        '📍 <b>Location:</b> ' + lead.location,
-        '📞 <b>Phone:</b> ' + lead.phone,
+        '📞 <b>Contact:</b> ' + lead.phone,
         '',
         '🕐 ' + new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' })
       ].join('\n');
@@ -296,7 +294,7 @@
       await tg(msg);
 
       await botSay(
-        '✅ <strong>You\'re all set!</strong>\n\nOur instructor will call you at <strong>' + lead.phone + '</strong> shortly to confirm your lesson.\n\nWant to chat now? Call <a href="tel:+61400000000">' + TEL + '</a>',
+        '✅ <strong>Done!</strong>\n\nOur instructor will be in touch shortly. If you\'d like to talk now, call <a href="tel:+61400000000">' + TEL + '</a>',
         700
       );
 
@@ -335,16 +333,12 @@
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const name       = (form.querySelector('#name')?.value || '').trim();
-      const phone      = (form.querySelector('#phone')?.value || '').trim();
-      const suburb     = (form.querySelector('#suburb')?.value || '').trim();
-      const lesson     = form.querySelector('#lesson')?.value || '';
-      const experience = form.querySelector('#experience')?.value || '';
-      const message    = (form.querySelector('#message')?.value || '').trim();
+      const name    = (form.querySelector('#name')?.value || '').trim();
+      const phone   = (form.querySelector('#phone')?.value || '').trim();
+      const message = (form.querySelector('#message')?.value || '').trim();
 
-      if (!name || !phone || !suburb) {
-        const missing = form.querySelectorAll('[required]');
-        missing.forEach(f => {
+      if (!name || !phone) {
+        form.querySelectorAll('[required]').forEach(f => {
           if (!f.value.trim()) {
             f.style.borderColor = '#cc2020';
             f.addEventListener('input', () => f.style.borderColor = '', { once: true });
@@ -360,12 +354,9 @@
         '📋 <b>New BPD Enquiry — Contact Form</b>',
         '',
         '👤 <b>Name:</b> ' + name,
-        '📞 <b>Phone:</b> ' + phone,
-        '📍 <b>Suburb:</b> ' + suburb,
+        '📞 <b>Contact:</b> ' + phone,
       ];
-      if (lesson)     lines.push('📚 <b>Lesson:</b> ' + lesson);
-      if (experience) lines.push('🎓 <b>Experience:</b> ' + experience);
-      if (message)    lines.push('💬 <b>Message:</b> ' + message);
+      if (message) lines.push('💬 <b>Message:</b> ' + message);
       lines.push('', '🕐 ' + new Date().toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' }));
 
       await tg(lines.join('\n'));
@@ -378,7 +369,7 @@
             <svg width="24" height="24" fill="none" stroke="#1a5438" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <h3 style="font-size:22px;color:#111c14;margin:0">Enquiry received!</h3>
-          <p style="font-size:15px;color:#4a5e52;max-width:36ch;margin:0">Thanks ${name} — our instructor will call you at <strong style="color:#111c14">${phone}</strong> within 24 hours.<br><br>Need to talk now? Call <a href="tel:+61400000000" style="color:#1a5438;font-weight:700">${TEL}</a></p>
+          <p style="font-size:15px;color:#4a5e52;max-width:36ch;margin:0">Thanks ${name} — our instructor will be in touch at <strong style="color:#111c14">${phone}</strong> within 24 hours.<br><br>Need to talk now? Call <a href="tel:+61400000000" style="color:#1a5438;font-weight:700">${TEL}</a></p>
         </div>
       `;
     });
