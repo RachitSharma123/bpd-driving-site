@@ -56,7 +56,13 @@
 
   <!-- ── HERO ── -->
   <section class="hero" aria-label="Hero">
-    <div class="wrap" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;">
+    <div class="hero-video-bg" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="none"
+        poster="https://images.pexels.com/videos/9518362/pictures/preview-0.jpg">
+        <source src="https://videos.pexels.com/video-files/9518362/9518362-hd_2048_1080_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="wrap" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;z-index:1;">
       <div class="hero-content">
         <div>
           <div class="hero-label" aria-hidden="true">BPD driving lessons</div>
@@ -567,13 +573,19 @@
     world.add(g);
   });
 
+  // Mouse adds subtle tilt on top of auto-rotation
   const ptr = { x: 0, y: 0 };
-  const el2 = document.getElementById('canvas');
-  if (el2) el2.closest('.scene-wrap').addEventListener("pointermove", e => {
-    const r = el2.getBoundingClientRect();
-    ptr.x = ((e.clientX - r.left) / r.width - .5) * 2;
-    ptr.y = ((e.clientY - r.top)  / r.height - .5) * 2;
-  }, { passive: true });
+  const sceneWrap = el.closest('.scene-wrap');
+  if (sceneWrap) {
+    sceneWrap.addEventListener("pointermove", e => {
+      const r = sceneWrap.getBoundingClientRect();
+      ptr.x = ((e.clientX - r.left) / r.width  - .5) * 2;
+      ptr.y = ((e.clientY - r.top)  / r.height - .5) * 2;
+    }, { passive: true });
+    sceneWrap.addEventListener("pointerleave", () => {
+      ptr.x = 0; ptr.y = 0;
+    }, { passive: true });
+  }
 
   function resize() {
     const r = el.getBoundingClientRect();
@@ -588,11 +600,24 @@
   let raf;
   (function tick(t) {
     raf = requestAnimationFrame(tick);
-    t  *= .001;
-    car.position.y    = .54 + Math.sin(t * 1.8) * .022;
-    car.rotation.y    = -.2 + Math.sin(t * .65) * .02;
-    world.rotation.y += (ptr.x * .08 - world.rotation.y) * .04;
-    world.rotation.x += (-ptr.y * .034 - world.rotation.x) * .04;
+    t *= .001;
+
+    // Auto-rotate world + mouse adds tilt
+    const autoY   = t * 0.09;           // full lap ~70 s
+    const targetY = autoY + ptr.x * 0.18;
+    const targetX = ptr.y * -0.08;
+
+    world.rotation.y += (targetY - world.rotation.y) * 0.025;
+    world.rotation.x += (targetX - world.rotation.x) * 0.04;
+
+    // Car idle bounce + subtle sway
+    car.position.y = .54 + Math.sin(t * 1.8) * .022;
+    car.rotation.y = -.2 + Math.sin(t * .65) * .018;
+
+    // Gentle camera bob
+    cam.position.y = 4.8 + Math.sin(t * .4) * .08;
+    cam.lookAt(0, .8, 0);
+
     renderer.render(scene, cam);
   })(0);
 </script>
