@@ -339,7 +339,7 @@ body.nav-open .nav-burger span:last-child   { transform: translateY(-7px) rotate
 
 /* ── HERO (HOME) ── */
 .hero {
-  background: linear-gradient(135deg, #0c1a3a 0%, #0066CC 60%, #1a8aff 100%);
+  background: #0c1a3a;
   min-height: calc(100dvh - 72px);
   display: flex;
   align-items: center;
@@ -354,29 +354,15 @@ body.nav-open .nav-burger span:last-child   { transform: translateY(-7px) rotate
   margin: 0 auto;
 }
 
-/* Video background */
-.hero-video-bg {
+/* Photo background */
+.hero-photo-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  overflow: hidden;
-}
-
-.hero-video-bg video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .12;
-  filter: saturate(.3) brightness(.6);
-}
-
-.hero-video-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, rgba(12,26,58,.97) 30%, rgba(0,102,204,.65) 65%, rgba(0,102,204,.2) 100%),
-    linear-gradient(to bottom, rgba(12,26,58,.5) 0%, transparent 40%, rgba(12,26,58,.7) 100%);
+  background-image: url('https://images.pexels.com/photos/3806288/pexels-photo-3806288.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size: cover;
+  background-position: center 40%;
+  filter: saturate(.7) brightness(.55);
 }
 
 .hero::before {
@@ -395,13 +381,11 @@ body.nav-open .nav-burger span:last-child   { transform: translateY(-7px) rotate
 .hero::after {
   content: "";
   position: absolute;
+  inset: 0;
   z-index: 1;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(244,121,32,.2), transparent 70%);
-  top: -100px;
-  right: -100px;
+  background:
+    linear-gradient(to right, rgba(10,20,50,.82) 0%, rgba(10,20,50,.55) 55%, rgba(10,20,50,.1) 100%),
+    linear-gradient(to top, rgba(10,20,50,.5) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -426,6 +410,52 @@ body.nav-open .nav-burger span:last-child   { transform: translateY(-7px) rotate
   height: 2px;
   background: var(--orange);
   border-radius: 2px;
+}
+
+/* ── HERO BRAND LOCKUP ── */
+.hero-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.hero-brand-mark {
+  font-family: 'Lexend', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: #fff;
+  line-height: 1;
+  padding: 10px 18px;
+  background: var(--orange);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.hero-brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 3px solid rgba(255,255,255,.25);
+  padding-left: 16px;
+}
+
+.hero-brand-name {
+  font-family: 'Lexend', sans-serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.hero-brand-tag {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
 
 .hero h1 {
