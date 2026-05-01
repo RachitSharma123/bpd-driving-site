@@ -702,6 +702,26 @@ body.nav-open .nav-burger span:last-child   { transform: translateY(-7px) rotate
   line-height: 1.4;
 }
 
+.stat-link {
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: background var(--ease-io) 200ms;
+}
+
+.stat-link:hover { background: var(--blue-pale); }
+.stat-link:hover .stat-number { transform: scale(1.04); }
+.stat-link:hover .stat-cta { color: var(--blue); }
+
+.stat-cta {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--faint);
+  letter-spacing: .04em;
+  transition: color var(--ease-io) 150ms;
+}
+
 /* ── STEPS (HOW IT WORKS) ── */
 .steps-grid {
   display: grid;
