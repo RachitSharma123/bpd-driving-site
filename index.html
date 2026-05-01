@@ -397,6 +397,291 @@
     </div>
   </section>
 
+  <!-- ── REACTION TIME GAME ── -->
+  <section class="section section--white" id="reaction-section">
+    <div class="wrap">
+      <div class="section-header center reveal">
+        <span class="section-label">Driver Challenge</span>
+        <h2>How fast are your reflexes?</h2>
+        <p>Good drivers react in under 250ms. Tap the light the moment it turns green — no cheating!</p>
+      </div>
+
+      <div class="reaction-game reveal" id="reactionGame">
+        <!-- Light display -->
+        <div class="rg-lights" aria-live="polite">
+          <div class="rg-light rg-red"   id="lgRed"></div>
+          <div class="rg-light rg-amber" id="lgAmber"></div>
+          <div class="rg-light rg-green" id="lgGreen"></div>
+        </div>
+
+        <!-- Tap zone -->
+        <button class="rg-tap" id="rgTap" aria-label="Tap when green">
+          <span class="rg-tap-label" id="rgLabel">Tap to Start</span>
+          <span class="rg-tap-sub"   id="rgSub">Get ready to react</span>
+        </button>
+
+        <!-- Result -->
+        <div class="rg-result" id="rgResult" hidden>
+          <div class="rg-time" id="rgTime">— ms</div>
+          <div class="rg-rating" id="rgRating"></div>
+          <div class="rg-compare">Avg human: <strong>250ms</strong> · Trained driver: <strong>190ms</strong></div>
+          <button class="btn btn-green rg-retry" id="rgRetry">Try Again</button>
+        </div>
+
+        <!-- Best score -->
+        <div class="rg-best" id="rgBest" hidden>
+          Best: <strong id="rgBestVal">—</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+  .reaction-game {
+    max-width: 480px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  /* Traffic lights */
+  .rg-lights {
+    display: flex;
+    gap: 14px;
+    background: #1a1a2e;
+    padding: 16px 24px;
+    border-radius: 999px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.18);
+  }
+
+  .rg-light {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    transition: box-shadow 0.15s, opacity 0.15s;
+    opacity: .18;
+  }
+
+  .rg-red   { background: #ef4444; }
+  .rg-amber { background: #f59e0b; }
+  .rg-green { background: #22c55e; }
+
+  .rg-light.on { opacity: 1; }
+  .rg-light.rg-red.on   { box-shadow: 0 0 20px 6px rgba(239,68,68,.5); }
+  .rg-light.rg-amber.on { box-shadow: 0 0 20px 6px rgba(245,158,11,.5); }
+  .rg-light.rg-green.on { box-shadow: 0 0 20px 6px rgba(34,197,94,.5); }
+
+  /* Tap zone */
+  .rg-tap {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: 0 8px 32px rgba(0,102,204,.35), 0 0 0 0 rgba(0,102,204,.3);
+    transition: transform 0.12s var(--ease), box-shadow 0.12s var(--ease), background 0.12s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  .rg-tap:active { transform: scale(.94); }
+
+  .rg-tap.state-wait  { background: var(--blue); animation: pulse-blue 1.5s infinite; }
+  .rg-tap.state-go    { background: #22c55e; box-shadow: 0 8px 32px rgba(34,197,94,.45), 0 0 0 0 rgba(34,197,94,.3); animation: pulse-green 0.6s infinite; }
+  .rg-tap.state-early { background: #ef4444; box-shadow: 0 8px 32px rgba(239,68,68,.4); animation: none; }
+  .rg-tap.state-done  { background: var(--blue); animation: none; }
+
+  @keyframes pulse-blue {
+    0%,100% { box-shadow: 0 8px 32px rgba(0,102,204,.35), 0 0 0 0 rgba(0,102,204,.25); }
+    50%      { box-shadow: 0 8px 32px rgba(0,102,204,.35), 0 0 0 18px rgba(0,102,204,.0); }
+  }
+
+  @keyframes pulse-green {
+    0%,100% { box-shadow: 0 8px 32px rgba(34,197,94,.45), 0 0 0 0 rgba(34,197,94,.3); }
+    50%      { box-shadow: 0 8px 32px rgba(34,197,94,.45), 0 0 0 22px rgba(34,197,94,.0); }
+  }
+
+  .rg-tap-label {
+    font-family: 'Lexend', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .rg-tap-sub {
+    font-size: 12px;
+    font-weight: 600;
+    opacity: .75;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  /* Result */
+  .rg-result {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: fadeUp 0.35s var(--ease);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .rg-time {
+    font-family: 'Lexend', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -0.07em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .rg-rating {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: .12em;
+  }
+
+  .rg-compare {
+    font-size: 13px;
+    color: var(--faint);
+  }
+
+  .rg-retry { margin-top: 6px; }
+
+  .rg-best {
+    font-size: 13px;
+    color: var(--mid);
+    font-weight: 600;
+  }
+
+  .rg-best strong { color: var(--blue); }
+  </style>
+
+  <script>
+  (function() {
+    const game    = document.getElementById('reactionGame');
+    const tap     = document.getElementById('rgTap');
+    const label   = document.getElementById('rgLabel');
+    const sub     = document.getElementById('rgSub');
+    const result  = document.getElementById('rgResult');
+    const rgTime  = document.getElementById('rgTime');
+    const rgRate  = document.getElementById('rgRating');
+    const retry   = document.getElementById('rgRetry');
+    const bestEl  = document.getElementById('rgBest');
+    const bestVal = document.getElementById('rgBestVal');
+    const lRed    = document.getElementById('lgRed');
+    const lAmber  = document.getElementById('lgAmber');
+    const lGreen  = document.getElementById('lgGreen');
+
+    let state = 'idle'; // idle | sequence | waiting | go | done
+    let startTime, goTimer, seqTimer;
+    let best = null;
+
+    function setLights(r, a, g) {
+      lRed.classList.toggle('on', r);
+      lAmber.classList.toggle('on', a);
+      lGreen.classList.toggle('on', g);
+    }
+
+    function rating(ms) {
+      if (ms < 170) return { text: 'Superhuman!', emoji: '🚀' };
+      if (ms < 210) return { text: 'Lightning fast', emoji: '⚡' };
+      if (ms < 250) return { text: 'Driver-ready', emoji: '✅' };
+      if (ms < 320) return { text: 'Pretty good', emoji: '👍' };
+      if (ms < 420) return { text: 'Keep practising', emoji: '🔄' };
+      return { text: 'Were you looking?', emoji: '👀' };
+    }
+
+    function startSequence() {
+      result.hidden = true;
+      tap.className = 'rg-tap state-wait';
+      label.textContent = 'Wait…';
+      sub.textContent = 'Watch the lights';
+      state = 'sequence';
+
+      setLights(true, false, false);
+
+      seqTimer = setTimeout(() => {
+        setLights(true, true, false);
+        seqTimer = setTimeout(() => {
+          // random delay 1–3s
+          const delay = 1000 + Math.random() * 2000;
+          seqTimer = setTimeout(() => {
+            setLights(false, false, true);
+            tap.className = 'rg-tap state-go';
+            label.textContent = 'TAP NOW!';
+            sub.textContent = '';
+            state = 'go';
+            startTime = performance.now();
+          }, delay);
+        }, 800);
+      }, 800);
+    }
+
+    function showResult(ms) {
+      const r = rating(ms);
+      rgTime.textContent = ms + ' ms';
+      rgRate.textContent = r.emoji + '  ' + r.text;
+
+      if (best === null || ms < best) {
+        best = ms;
+        bestVal.textContent = ms + ' ms';
+        bestEl.hidden = false;
+      }
+
+      result.hidden = false;
+      tap.className = 'rg-tap state-done';
+      label.textContent = 'Done!';
+      sub.textContent = '';
+      setLights(false, false, false);
+      state = 'done';
+    }
+
+    function earlyTap() {
+      clearTimeout(goTimer);
+      clearTimeout(seqTimer);
+      setLights(true, false, false);
+      tap.className = 'rg-tap state-early';
+      label.textContent = 'Too early!';
+      sub.textContent = 'Wait for green';
+      state = 'early';
+      setTimeout(startSequence, 1600);
+    }
+
+    tap.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      if (state === 'idle' || state === 'done' || state === 'early') {
+        startSequence();
+      } else if (state === 'go') {
+        const ms = Math.round(performance.now() - startTime);
+        showResult(ms);
+      } else if (state === 'sequence' || state === 'wait') {
+        earlyTap();
+      }
+    });
+
+    retry.addEventListener('click', startSequence);
+  })();
+  </script>
+
   <!-- ── CTA ── -->
   <section class="cta-strip">
     <div class="wrap cta-strip-inner reveal">
