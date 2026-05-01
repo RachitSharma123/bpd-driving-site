@@ -62,44 +62,30 @@
         <source src="https://videos.pexels.com/video-files/9518362/9518362-hd_2048_1080_25fps.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="wrap hero-inner">
+    <div class="wrap hero-single">
       <div class="hero-content">
-        <div>
-          <div class="hero-label" aria-hidden="true">BPD driving lessons</div>
-          <h1>Get your Ps.<br><em>No stress.</em></h1>
-          <p class="hero-sub">Structured, patient lessons for learners who want to pass first time — and actually know what they're doing behind the wheel.</p>
-          <div class="hero-actions">
-            <a class="btn btn-gold btn-lg" href="contact.html">Book a lesson</a>
-            <a class="btn btn-outline-white btn-lg" href="services.html">See all services</a>
+        <div class="hero-label" aria-hidden="true">BPD driving lessons</div>
+        <h1>Get your Ps.<br><em>No stress.</em></h1>
+        <p class="hero-sub">Structured, patient lessons for learners who want to pass first time — and actually know what they're doing behind the wheel.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold btn-lg" href="contact.html">Book a lesson</a>
+          <a class="btn btn-outline-white btn-lg" href="services.html">See all services</a>
+        </div>
+        <div class="hero-meta" aria-label="Key facts">
+          <div class="hero-stat">
+            <strong>Auto + Manual</strong>
+            <span>Both available</span>
           </div>
-          <div class="hero-meta" aria-label="Key facts">
-            <div class="hero-stat">
-              <strong>Auto + Manual</strong>
-              <span>Both available</span>
-            </div>
-            <div class="hero-stat">
-              <strong>All ages</strong>
-              <span>16 to 60+</span>
-            </div>
-            <div class="hero-stat">
-              <strong>L to P</strong>
-              <span>And beyond</span>
-            </div>
+          <div class="hero-stat">
+            <strong>All ages</strong>
+            <span>16 to 60+</span>
+          </div>
+          <div class="hero-stat">
+            <strong>L to P</strong>
+            <span>And beyond</span>
           </div>
         </div>
-
-        </div>
-
-        <div class="scene-wrap" aria-label="Interactive 3D driving scene — move your mouse to look around">
-          <canvas id="canvas"></canvas>
-          <div class="scene-chip">
-            <div>
-              <p>Interactive 3D preview</p>
-              <span>Move your mouse to look around</span>
-            </div>
-            <span class="chip-badge">Dual-control car</span>
-          </div>
-        </div>
+      </div>
     </div>
   </section>
 
@@ -747,166 +733,6 @@
 
 <script src="js/main.js" defer></script>
 <script src="js/chatbot.js" defer></script>
-<script type="module">
-  import * as THREE from "https://unpkg.com/three@0.163.0/build/three.module.js";
-
-  const el    = document.getElementById("canvas");
-  if (!el) throw new Error("No canvas");
-
-  const scene = new THREE.Scene();
-  scene.fog   = new THREE.Fog(0x0c1810, 18, 42);
-
-  const renderer = new THREE.WebGLRenderer({ canvas: el, antialias: true, alpha: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
-
-  const cam = new THREE.PerspectiveCamera(36, 1, .1, 80);
-  cam.position.set(6.4, 4.8, 9.4);
-  cam.lookAt(0, .8, 0);
-
-  scene.add(new THREE.HemisphereLight(0x446655, 0x223322, 2.0));
-  const sun = new THREE.DirectionalLight(0xfff8e8, 3.2);
-  sun.position.set(5, 10, 7);
-  sun.castShadow = true;
-  sun.shadow.mapSize.set(1024, 1024);
-  scene.add(sun);
-  const fill = new THREE.DirectionalLight(0x88aacc, .5);
-  fill.position.set(-5, 3, -3);
-  scene.add(fill);
-
-  const M = (c, r = .75, m = .02) => new THREE.MeshStandardMaterial({ color: c, roughness: r, metalness: m });
-
-  const world = new THREE.Group();
-  scene.add(world);
-
-  // Ground
-  const gnd = new THREE.Mesh(new THREE.PlaneGeometry(34, 34), M(0x1a2e1e, .95));
-  gnd.rotation.x = -Math.PI / 2; gnd.receiveShadow = true;
-  world.add(gnd);
-
-  // Road
-  const road = new THREE.Mesh(new THREE.BoxGeometry(5.6, .08, 30), M(0x1e2820, .9));
-  road.position.y = .02; road.rotation.y = -.2; road.receiveShadow = true;
-  world.add(road);
-
-  for (let i = -7; i <= 7; i++) {
-    const d = new THREE.Mesh(new THREE.BoxGeometry(.13, .04, .95), M(0xe6b840, .5));
-    d.position.set(0, .07, i * 2.4); d.rotation.y = road.rotation.y;
-    world.add(d);
-  }
-
-  [-2.4, 2.4].forEach(x => {
-    const e = new THREE.Mesh(new THREE.BoxGeometry(.07, .03, 30), M(0xffffff, .5));
-    e.position.set(x, .05, 0); e.rotation.y = road.rotation.y;
-    world.add(e);
-  });
-
-  const car = new THREE.Group();
-  car.position.set(0, .52, .2); car.rotation.y = -.2;
-  world.add(car);
-
-  const matG  = M(0x1a5438);
-  const matGl = new THREE.MeshPhysicalMaterial({ color: 0xb8d8e8, roughness: .08, transmission: .14, transparent: true, opacity: .8 });
-
-  car.add(Object.assign(new THREE.Mesh(new THREE.BoxGeometry(3.8, .72, 1.78), matG), { castShadow: true }));
-  const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.84, .88, 1.44), matGl);
-  cabin.position.set(.1, .75, 0); cabin.castShadow = true; car.add(cabin);
-  const bonnet = new THREE.Mesh(new THREE.BoxGeometry(1.18, .22, 1.58), matG);
-  bonnet.position.set(-1.88, .24, 0); bonnet.castShadow = true; car.add(bonnet);
-  const boot = new THREE.Mesh(new THREE.BoxGeometry(.72, .38, 1.58), matG);
-  boot.position.set(1.94, .08, 0); boot.castShadow = true; car.add(boot);
-
-  const lp = new THREE.Mesh(new THREE.BoxGeometry(1.0, .46, .1), M(0xffffff, .5));
-  lp.position.set(.2, 1.34, 0); car.add(lp);
-  const lc = new THREE.Mesh(new THREE.BoxGeometry(.3, .3, .12), M(0xe6b840, .5));
-  lc.position.set(.2, 1.34, .02); car.add(lc);
-
-  [-.38, .38].forEach(z => {
-    const hl = new THREE.Mesh(new THREE.BoxGeometry(.07, .2, .32), M(0xe6b840, .3));
-    hl.position.set(-1.94, .08, z); car.add(hl);
-    const tl = new THREE.Mesh(new THREE.BoxGeometry(.06, .18, .3), M(0xcc2020, .3));
-    tl.position.set(1.98, .08, z); car.add(tl);
-  });
-
-  const wg = new THREE.CylinderGeometry(.38, .38, .38, 28);
-  const hg = new THREE.CylinderGeometry(.19, .19, .4, 20);
-  [[-1.22,-.26,-.92],[1.22,-.26,-.92],[-1.22,-.26,.92],[1.22,-.26,.92]].forEach(([x,y,z]) => {
-    const w = new THREE.Mesh(wg, M(0x0e1010, .9)); w.rotation.z = Math.PI/2; w.position.set(x,y,z); w.castShadow = true; car.add(w);
-    const h = new THREE.Mesh(hg, M(0xe6b840, .5)); h.rotation.z = Math.PI/2; h.position.set(x,y,z); car.add(h);
-  });
-
-  const coneMat  = M(0xf07018, .6);
-  const coneBase = M(0x0e1010, .9);
-  [-4.2,-2.6,-1.0,.6,2.2,3.8].forEach((z, i) => {
-    const g = new THREE.Group();
-    g.position.set(3.3 + Math.sin(i*1.4)*.5, 0, z);
-    const cone = new THREE.Mesh(new THREE.ConeGeometry(.16,.52,22), coneMat);
-    cone.position.y = .3; cone.castShadow = true; g.add(cone);
-    const stripe = new THREE.Mesh(new THREE.CylinderGeometry(.168,.15,.09,22), M(0xffffff,.5));
-    stripe.position.y = .36; g.add(stripe);
-    const base = new THREE.Mesh(new THREE.CylinderGeometry(.26,.27,.06,22), coneBase);
-    base.position.y = .03; g.add(base);
-    world.add(g);
-  });
-
-  [[-5.8,3.2],[-5.8,-2.0],[-5.8,-7.4],[6.2,4.0],[6.2,-1.6],[6.2,-7.0]].forEach(([x,z]) => {
-    const g = new THREE.Group(); g.position.set(x,0,z);
-    const t = new THREE.Mesh(new THREE.CylinderGeometry(.1,.14,.88,10), M(0x5a3e20,.9));
-    t.position.y = .44; t.castShadow = true; g.add(t);
-    const l = new THREE.Mesh(new THREE.SphereGeometry(.62,10,10), M(0x1a4428,.88));
-    l.position.y = 1.42; l.castShadow = true; g.add(l);
-    world.add(g);
-  });
-
-  // Mouse adds subtle tilt on top of auto-rotation
-  const ptr = { x: 0, y: 0 };
-  const sceneWrap = el.closest('.scene-wrap');
-  if (sceneWrap) {
-    sceneWrap.addEventListener("pointermove", e => {
-      const r = sceneWrap.getBoundingClientRect();
-      ptr.x = ((e.clientX - r.left) / r.width  - .5) * 2;
-      ptr.y = ((e.clientY - r.top)  / r.height - .5) * 2;
-    }, { passive: true });
-    sceneWrap.addEventListener("pointerleave", () => {
-      ptr.x = 0; ptr.y = 0;
-    }, { passive: true });
-  }
-
-  function resize() {
-    const r = el.getBoundingClientRect();
-    const w = Math.max(1, r.width|0), h = Math.max(1, r.height|0);
-    renderer.setSize(w, h, false);
-    cam.aspect = w / h; cam.updateProjectionMatrix();
-  }
-
-  window.addEventListener("resize", resize, { passive: true });
-  resize();
-
-  let raf;
-  (function tick(t) {
-    raf = requestAnimationFrame(tick);
-    t *= .001;
-
-    // Auto-rotate world + mouse adds tilt
-    const autoY   = t * 0.09;           // full lap ~70 s
-    const targetY = autoY + ptr.x * 0.18;
-    const targetX = ptr.y * -0.08;
-
-    world.rotation.y += (targetY - world.rotation.y) * 0.025;
-    world.rotation.x += (targetX - world.rotation.x) * 0.04;
-
-    // Car idle bounce + subtle sway
-    car.position.y = .54 + Math.sin(t * 1.8) * .022;
-    car.rotation.y = -.2 + Math.sin(t * .65) * .018;
-
-    // Gentle camera bob
-    cam.position.y = 4.8 + Math.sin(t * .4) * .08;
-    cam.lookAt(0, .8, 0);
-
-    renderer.render(scene, cam);
-  })(0);
-</script>
 
 </body>
 </html>

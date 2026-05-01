@@ -326,6 +326,17 @@ body.nav-open .nav-burger span:last-child   { transform: translateY(-7px) rotate
   width: 100%;
 }
 
+/* ── HERO SINGLE COLUMN (no 3D scene) ── */
+.hero-single {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.hero-single .hero-content { max-width: 100%; }
+.hero-single .hero-sub { max-width: 54ch; }
+.hero-single .hero-h1  { max-width: none; }
+
 /* ── HERO (HOME) ── */
 .hero {
   background: linear-gradient(135deg, #0c1a3a 0%, #0066CC 60%, #1a8aff 100%);
